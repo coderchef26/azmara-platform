@@ -1,0 +1,28 @@
+{
+  "name": "azmara-platform",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Azmara — modern data-first application runtime",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "check": "biome check --write .",
+    "test": "turbo run test",
+    "check-types": "turbo run check-types",
+    "audit:deps": "pnpm audit --audit-level=high",
+    "clean": "turbo run clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.3",
+    "vitest": "^2.1.9",
+    "tsup": "^8.3.5"
+  }
+}

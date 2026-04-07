@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.turbo/
+*.tsbuildinfo
+.env
+.env.local
+.env.*.local
+.azmara/
+*.log
+coverage/
+.DS_Store
+Thumbs.db
