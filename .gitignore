@@ -1,3 +1,6 @@
+# Task tracking — local only, never commit
+tasks.md
+
 node_modules/
 dist/
 .turbo/
@@ -8,5 +11,7 @@ dist/
 .azmara/
 *.log
 coverage/
+apps/docs/src/.vitepress/dist/
+apps/docs/src/.vitepress/cache/
 .DS_Store
 Thumbs.db

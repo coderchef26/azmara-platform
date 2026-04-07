@@ -1,0 +1,16 @@
+{
+  "name": "@azmara/docs",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Azmara Platform documentation site",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev src",
+    "build": "vitepress build src",
+    "preview": "vitepress preview src",
+    "clean": "rm -rf src/.vitepress/dist src/.vitepress/cache"
+  },
+  "devDependencies": {
+    "vitepress": "^1.5.0"
+  }
+}
