@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
   title: "Azmara Platform",
   tagline: "Modern data-first application runtime",
-  favicon: "img/favicon.ico",
+  favicon: "img/logo.svg",
 
   url: "https://azmara-platform.vercel.app",
   baseUrl: "/",
@@ -14,7 +14,11 @@ const config: Config = {
   projectName: "azmara-platform",
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn",
+    },
+  },
 
   i18n: {
     defaultLocale: "en",
@@ -63,6 +67,7 @@ const config: Config = {
       logo: {
         alt: "Azmara Logo",
         src: "img/logo.svg",
+        srcDark: "img/logo-dark.svg",
       },
       items: [
         {
