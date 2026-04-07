@@ -7,8 +7,8 @@ const config: Config = {
   tagline: "Modern data-first application runtime",
   favicon: "img/logo.svg",
 
-  url: "https://coderchef26.github.io",
-  baseUrl: "/azmara-platform/",
+  url: "https://docs.azmara.io",
+  baseUrl: "/",
 
   organizationName: "coderchef26",
   projectName: "azmara-platform",
