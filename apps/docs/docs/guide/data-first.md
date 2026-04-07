@@ -6,32 +6,55 @@ sidebar_position: 5
 
 Azmara is built around a single idea: **your data layer should not be an external dependency — it should be the foundation**.
 
-## The FoxPro insight
+## The problem with modern stacks
 
-Microsoft FoxPro was ahead of its time. In the 1990s it gave developers:
-- A built-in database engine (no separate DB to install)
-- A query language tightly integrated with the app
-- A UI system that was directly coupled to data
+Modern application stacks have fragmented what should be a cohesive system. To show a list of records you now wire together:
 
-Modern stacks fragmented this. You now wire together a database driver, an ORM, a state management library, a UI framework, and an API layer — just to show a list of records.
+- A database driver
+- An ORM or query builder
+- A state management library
+- A UI framework
+- An API layer to connect them all
 
-## What Azmara restores
+Each layer has its own config, its own bugs, and its own version mismatch risks. The result is more glue than product.
+
+## What Azmara does differently
+
+Azmara treats data, reactivity, and UI as a single integrated system — not separate tools bolted together.
 
 ```
-FoxPro (1990s)          Azmara (now)
-──────────────          ────────────
-Built-in DB engine  →   @azmara/db (SQLite, zero config)
-xBase query syntax  →   @azmara/query (type-safe, chainable)
-Reactive forms/UI   →   @azmara/core + @azmara/ui (Signals → React)
-All-in-one IDE      →   @azmara/cli (scaffolding + tooling)
+[ Data (SQLite) ] → [ Query Engine ] → [ Reactive Signals ] → [ React UI ]
 ```
 
-## The difference from FoxPro
+Every layer speaks the same language. Query results flow directly into Signals. Signals drive React components. The UI stays in sync automatically — no manual wiring.
 
-Azmara is not FoxPro reimplemented. It takes the philosophy — data first — and applies it to the modern TypeScript ecosystem:
+## The core model
 
-- Type-safe throughout (FoxPro was loosely typed)
-- Secure by design (FoxPro had no concept of injection attacks)
-- Cloud-ready (FoxPro was desktop-only)
-- React-compatible (modern UI layer)
-- AI-augmented (self-improving code)
+```
+@azmara/db      ← your data lives here, secured and persistent
+@azmara/query   ← you express what you want, not how to get it
+@azmara/core    ← the result becomes reactive automatically
+@azmara/ui      ← your UI reflects reality at all times
+```
+
+## What this means in practice
+
+```typescript
+// 1. Define your data
+const db = new SQLiteAdapter(".azmara/app.db", ".azmara");
+db.createTable("orders", { customer: "string", total: "number", paid: "boolean" });
+
+// 2. Query it
+const unpaid = query(db.getAll("orders"))
+  .where(o => !o.paid)
+  .orderBy((a, b) => b.total - a.total)
+  .select();
+
+// 3. Make it reactive
+const unpaidSignal = new Signal(unpaid);
+
+// 4. Render it — updates automatically
+<Grid signal={unpaidSignal} />
+```
+
+No reducers. No selectors. No store configuration. Data flows in one direction, from source to screen.

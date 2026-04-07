@@ -12,9 +12,9 @@ const features = [
       "Signals, effects, and computed values with built-in infinite-loop protection. UI updates automatically when data changes.",
   },
   {
-    title: "FoxPro-style Queries",
+    title: "Data-First Queries",
     description:
-      "Chainable, type-safe query builder over reactive or static data. No eval, no injection — predicates are TypeScript functions.",
+      "Chainable, type-safe query builder over reactive or static data sources. No eval, no injection — predicates are TypeScript functions.",
   },
   {
     title: "Secure SQLite",

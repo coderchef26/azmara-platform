@@ -2,7 +2,7 @@
   "name": "@azmara/query",
   "version": "0.0.1",
   "private": true,
-  "description": "FoxPro-inspired chainable query engine over reactive data sources",
+  "description": "Chainable, data-first query engine over reactive data sources",
   "type": "module",
   "exports": {
     ".": {

@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Introduction
 
-Azmara Platform is a modern, data-first application runtime inspired by the philosophy of Microsoft FoxPro — where your data layer is a first-class citizen, not an afterthought.
+Azmara Platform is a modern, data-first application runtime where your data layer is a first-class citizen, not an afterthought.
 
 ## What it is
 
@@ -28,7 +28,7 @@ Unlike modern stacks that bolt a database onto the side of a framework, Azmara p
 | Package | Purpose |
 |---|---|
 | `@azmara/core` | Reactive signals, effects, computed values |
-| `@azmara/query` | Chainable FoxPro-style query builder |
+| `@azmara/query` | Chainable, data-first query builder |
 | `@azmara/db` | Secure SQLite adapter |
 | `@azmara/ui` | React components wired to signals |
 | `@azmara/ai` | AI auto-fix with isolated-vm sandbox |

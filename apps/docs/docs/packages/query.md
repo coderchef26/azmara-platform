@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # @azmara/query
 
-FoxPro-inspired chainable query builder over arrays or reactive Signals.
+Chainable, data-first query builder over arrays or reactive Signals.
 
 ## Installation
 

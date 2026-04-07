@@ -4,7 +4,7 @@ type Predicate<T> = (item: T) => boolean;
 type Comparator<T> = (a: T, b: T) => number;
 
 /**
- * Chainable, type-safe query builder over an array or reactive Signal.
+ * Chainable, data-first query builder over an array or reactive Signal.
  * Predicates are always TypeScript functions — no string eval, no injection risk.
  *
  * Usage:
