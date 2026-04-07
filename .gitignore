@@ -11,7 +11,7 @@ dist/
 .azmara/
 *.log
 coverage/
-apps/docs/src/.vitepress/dist/
-apps/docs/src/.vitepress/cache/
+apps/docs/build/
+apps/docs/.docusaurus/
 .DS_Store
 Thumbs.db
