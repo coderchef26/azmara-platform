@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "description": "Azmara — modern data-first application runtime",
+  "packageManager": "pnpm@10.6.1",
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=9.0.0"

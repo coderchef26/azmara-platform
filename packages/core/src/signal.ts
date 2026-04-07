@@ -51,6 +51,11 @@ export function effect(fn: () => void): () => void {
   }
 
   const run: Subscriber = () => {
+    if (effectDepth >= MAX_EFFECT_DEPTH) {
+      throw new Error(
+        `[azmara/core] Effect depth limit (${MAX_EFFECT_DEPTH}) exceeded — possible infinite loop detected`,
+      );
+    }
     effectDepth++;
     const prev = currentEffect;
     currentEffect = run;

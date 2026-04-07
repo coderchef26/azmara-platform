@@ -10,6 +10,7 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "version": "docusaurus docs:version",
+    "test": "vitest run --passWithNoTests",
     "typecheck": "tsc"
   },
   "dependencies": {

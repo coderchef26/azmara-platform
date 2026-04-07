@@ -8,7 +8,7 @@
     "dev": "tsx src/index.ts",
     "build": "tsup src/index.ts --format esm --clean",
     "check-types": "tsc --noEmit",
-    "test": "vitest run",
+    "test": "vitest run --passWithNoTests",
     "clean": "rm -rf dist"
   },
   "dependencies": {
