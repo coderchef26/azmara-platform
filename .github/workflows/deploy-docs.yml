@@ -36,16 +36,22 @@ jobs:
       - name: Build docs
         run: pnpm --filter @azmara/docs build
 
+      - name: Vercel build (prebuilt output)
+        run: npx vercel build --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/docs
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
       - name: Deploy to Vercel (Production)
         if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'workflow_dispatch'
-        run: npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/docs
+        run: npx vercel deploy --prebuilt --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/docs
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
       - name: Deploy to Vercel (Preview)
         if: github.event_name == 'pull_request'
-        run: npx vercel --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/docs
+        run: npx vercel deploy --prebuilt --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/docs
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
