@@ -43,3 +43,32 @@ jobs:
 
       - name: Security audit
         run: pnpm audit:deps
+
+  changeset:
+    name: Changeset check
+    runs-on: ubuntu-latest
+    # Only check on PRs — not on direct pushes to main
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check for changeset
+        run: pnpm changeset status --since=origin/main
