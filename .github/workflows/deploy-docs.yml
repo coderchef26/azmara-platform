@@ -39,7 +39,7 @@ jobs:
         run: pnpm --filter @azmara/docs build
 
       - name: Deploy to Vercel (Production)
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: (github.ref == 'refs/heads/main' && github.event_name == 'push') || github.event_name == 'workflow_dispatch'
         run: npx vercel --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --cwd apps/docs
         env:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
