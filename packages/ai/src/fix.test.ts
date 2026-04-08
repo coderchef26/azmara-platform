@@ -2,6 +2,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { ModelAdapter } from "./fix.js";
 
 // Mock isolated-vm so tests run without native compilation
 vi.mock("isolated-vm", () => ({
@@ -18,6 +19,11 @@ vi.mock("isolated-vm", () => ({
   },
 }));
 
+/** Minimal adapter stub — never called in path-validation tests */
+const stubAdapter: ModelAdapter = {
+  suggest: vi.fn().mockResolvedValue("const x = 1;"),
+};
+
 describe("autoFix — path validation", () => {
   beforeEach(() => {
     vi.resetModules();
@@ -27,7 +33,7 @@ describe("autoFix — path validation", () => {
     const { autoFix } = await import("./fix.js");
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-ai-test-"));
 
-    await expect(autoFix(path.join(dir, "../../etc/passwd"), dir)).rejects.toThrow();
+    await expect(autoFix(path.join(dir, "../../etc/passwd"), dir, stubAdapter)).rejects.toThrow();
 
     fs.rmSync(dir, { recursive: true });
   });
@@ -36,25 +42,30 @@ describe("autoFix — path validation", () => {
     const { autoFix } = await import("./fix.js");
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-ai-test-"));
 
-    await expect(autoFix(path.join(dir, "file\0.ts"), dir)).rejects.toThrow();
+    await expect(autoFix(path.join(dir, "file\0.ts"), dir, stubAdapter)).rejects.toThrow();
 
     fs.rmSync(dir, { recursive: true });
   });
+});
 
-  it("rejects when OPENAI_API_KEY is missing", async () => {
-    const { autoFix } = await import("./fix.js");
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-ai-test-"));
-    const file = path.join(dir, "test.ts");
-    fs.writeFileSync(file, "const x = 1;");
+describe("buildContext — primitive detection", () => {
+  it("detects Signal usage", async () => {
+    const { buildContext } = await import("./fix.js");
+    const ctx = buildContext("test.ts", "const count = new Signal(0);");
+    expect(ctx.primitives).toContain("Signal");
+  });
 
-    const prev = process.env.OPENAI_API_KEY;
-    // biome-ignore lint/performance/noDelete: delete is required — setting to undefined leaves the string "undefined" in process.env
-    delete process.env.OPENAI_API_KEY;
+  it("detects multiple primitives", async () => {
+    const { buildContext } = await import("./fix.js");
+    const ctx = buildContext("test.ts", "const q = query(data); effect(() => {});");
+    expect(ctx.primitives).toContain("query");
+    expect(ctx.primitives).toContain("effect");
+  });
 
-    await expect(autoFix(file, dir)).rejects.toThrow("OPENAI_API_KEY");
-
-    if (prev !== undefined) process.env.OPENAI_API_KEY = prev;
-    fs.rmSync(dir, { recursive: true });
+  it("returns empty primitives for plain code", async () => {
+    const { buildContext } = await import("./fix.js");
+    const ctx = buildContext("test.ts", "const x = 1 + 2;");
+    expect(ctx.primitives).toHaveLength(0);
   });
 });
 
