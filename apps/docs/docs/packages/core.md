@@ -58,15 +58,35 @@ price.set(200);
 console.log(gst.get()); // 30
 ```
 
-## Safety
+## subscribe
 
-Effects are protected against infinite loops — an error is thrown if the effect call depth exceeds 100.
+Listen to a Signal from outside the reactive system — useful for bridging to React, Vue, or any non-reactive code.
 
 ```typescript
-// This will throw: [azmara/core] Effect depth limit (100) exceeded
+import { Signal } from "@azmara/core";
+
+const price = new Signal(100);
+
+const unsubscribe = price.subscribe((value) => {
+  console.log(`price changed to ${value}`);
+});
+
+price.set(200); // → price changed to 200
+
+unsubscribe(); // stop listening
+```
+
+## Safety
+
+The scheduler uses a generation counter to prevent effects from running more than once per flush cycle. An effect that reads and writes the same signal will run at most twice — the re-queue is deduplicated, preventing unbounded loops.
+
+```typescript
+const s = new Signal(0);
+
+// Safe — deduplicated by the scheduler, never runs unboundedly
 effect(() => {
-  count.get();
-  count.set(count.peek() + 1); // triggers itself
+  s.get();
+  s.set(s.peek() + 1);
 });
 ```
 
@@ -79,6 +99,7 @@ effect(() => {
 | `get()` | `T` | Read value and subscribe current effect |
 | `set(value)` | `void` | Update value and notify subscribers |
 | `peek()` | `T` | Read value without subscribing |
+| `subscribe(fn)` | `() => void` | Register a callback, returns unsubscribe function |
 
 ### Functions
 

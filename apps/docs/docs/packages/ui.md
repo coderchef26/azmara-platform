@@ -39,7 +39,7 @@ When `customers.set([...])` is called, the grid updates automatically — no sta
 
 ## useSignal
 
-Hook to subscribe a React component to any Signal.
+Hook to subscribe a React component to any Signal. Uses `Signal.subscribe()` for push-based updates — the component re-renders only when the signal value actually changes.
 
 ```tsx
 import { useSignal } from "@azmara/ui";

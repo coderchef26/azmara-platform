@@ -58,6 +58,7 @@ All table and column names are validated against `[a-zA-Z_][a-zA-Z0-9_]*` before
 | `insert(name, row)` | Insert a single row (parameterised) |
 | `insertMany(name, rows)` | Insert multiple rows in a transaction |
 | `getAll<T>(name)` | Return all rows typed as `T[]` |
+| `truncateTable(name)` | Delete all rows from a table (keeps schema) |
 | `deleteWhere(name, condition, params)` | Delete rows — condition must be developer-authored |
 | `close()` | Close the database connection |
 | `db.path` | Resolved path to the database file |

@@ -55,6 +55,7 @@ mkdirSync(DB_BASE, { recursive: true });
 const db = new SQLiteAdapter(DB_PATH, DB_BASE);
 
 db.createTable("products", { name: "string", price: "number", inStock: "boolean" });
+db.truncateTable("products");
 db.insertMany("products", [
   { name: "Widget A", price: 29.99, inStock: 1 },
   { name: "Widget B", price: 49.99, inStock: 0 },

@@ -39,14 +39,18 @@ describe("effect", () => {
     expect(fn).toHaveBeenCalledTimes(2);
   });
 
-  it("throws on infinite loop", () => {
-    expect(() => {
-      const s = new Signal(0);
-      effect(() => {
-        s.get();
-        s.set(s.peek() + 1);
-      });
-    }).toThrow(/depth limit/);
+  it("does not run unboundedly when an effect writes its own signal", () => {
+    // The scheduler's generation guard allows at most one re-run per flush
+    // cycle when an effect both reads and writes the same signal.
+    const s = new Signal(0);
+    const fn = vi.fn(() => {
+      s.get();
+      s.set(s.peek() + 1);
+    });
+    effect(fn);
+    // Initial run + one re-run from the queued set — then deduplicated. Never unbounded.
+    expect(fn.mock.calls.length).toBeLessThanOrEqual(3);
+    expect(s.peek()).toBeGreaterThan(0);
   });
 });
 

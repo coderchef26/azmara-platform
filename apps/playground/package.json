@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
+    "web": "vite",
     "build": "tsup src/index.ts --format esm --clean",
     "check-types": "tsc --noEmit",
     "test": "vitest run --passWithNoTests",
@@ -15,12 +16,19 @@
     "@azmara/core": "workspace:*",
     "@azmara/db": "workspace:*",
     "@azmara/query": "workspace:*",
-    "@azmara/security": "workspace:*"
+    "@azmara/security": "workspace:*",
+    "@azmara/ui": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "tsx": "^4.19.2",
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
+    "vite": "^6.0.0",
     "vitest": "^2.1.9"
   }
 }

@@ -95,6 +95,26 @@ export class SQLiteAdapter {
     return this.db.prepare(`SELECT * FROM "${name}"`).all() as T[];
   }
 
+  /**
+   * Execute a raw SELECT statement. Only SELECT is permitted — any other
+   * statement type throws immediately. Params are passed through
+   * better-sqlite3's parameterised binding so values are never concatenated.
+   *
+   * Note: `sql` must be developer-authored (e.g. CLI input), not end-user input.
+   */
+  rawSelect<T = unknown>(sql: string, params: unknown[] = []): T[] {
+    if (!/^\s*SELECT\b/i.test(sql)) {
+      throw new Error("[azmara/db] rawSelect only accepts SELECT statements");
+    }
+    return this.db.prepare(sql).all(params) as T[];
+  }
+
+  truncateTable(name: string): void {
+    assertSafeIdentifier(name, "table name");
+    this.db.prepare(`DELETE FROM "${name}"`).run();
+    this.audit.log("truncateTable", { table: name });
+  }
+
   deleteWhere(name: string, condition: string, params: unknown[]): number {
     // condition must be a trusted, developer-authored string — never user input
     assertSafeIdentifier(name, "table name");
