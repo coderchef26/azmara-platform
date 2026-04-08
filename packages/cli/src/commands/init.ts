@@ -142,8 +142,7 @@ export function init(args: string[]): void {
 
   if (!NAME_RE.test(name)) {
     console.error(
-      `\n  Error: invalid app name "${name}"\n` +
-        "  Names must be lowercase alphanumeric with hyphens or underscores.\n",
+      `\n  Error: invalid app name "${name}"\n  Names must be lowercase alphanumeric with hyphens or underscores.\n`,
     );
     process.exit(1);
   }
@@ -162,11 +161,11 @@ export function init(args: string[]): void {
 
   // Write files
   const files: Record<string, string> = {
-    "package.json":    packageJson(name),
-    "tsconfig.json":   tsconfigJson,
-    ".gitignore":      gitignore,
-    ".env.example":    envExample,
-    "src/index.ts":    indexTs(name),
+    "package.json": packageJson(name),
+    "tsconfig.json": tsconfigJson,
+    ".gitignore": gitignore,
+    ".env.example": envExample,
+    "src/index.ts": indexTs(name),
   };
 
   for (const [file, content] of Object.entries(files)) {

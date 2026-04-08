@@ -20,12 +20,7 @@
     "clean": "turbo run clean && rm -rf node_modules"
   },
   "pnpm": {
-    "onlyBuiltDependencies": [
-      "@biomejs/biome",
-      "better-sqlite3",
-      "esbuild",
-      "isolated-vm"
-    ]
+    "onlyBuiltDependencies": ["@biomejs/biome", "better-sqlite3", "esbuild", "isolated-vm"]
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

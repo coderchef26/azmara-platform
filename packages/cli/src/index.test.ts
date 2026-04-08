@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { sanitiseForLog } from "@azmara/security";
+import { describe, expect, it } from "vitest";
 
 describe("CLI — arg sanitisation", () => {
   it("sanitises unknown command before displaying", () => {

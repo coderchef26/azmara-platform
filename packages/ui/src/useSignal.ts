@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import type { Signal } from "@azmara/core";
+import { useEffect, useState } from "react";
 
 /**
  * React hook that subscribes to a Signal and triggers re-renders on change.

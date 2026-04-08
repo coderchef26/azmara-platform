@@ -43,20 +43,20 @@ describe("validate", () => {
 
 describe("validateEnv", () => {
   it("passes when all required vars are set", () => {
-    process.env["TEST_VAR_A"] = "value";
+    process.env.TEST_VAR_A = "value";
     expect(() => validateEnv(["TEST_VAR_A"])).not.toThrow();
-    delete process.env["TEST_VAR_A"];
+    process.env.TEST_VAR_A = undefined;
   });
 
   it("throws listing missing vars", () => {
-    delete process.env["MISSING_VAR_X"];
+    process.env.MISSING_VAR_X = undefined;
     expect(() => validateEnv(["MISSING_VAR_X"])).toThrow("MISSING_VAR_X");
   });
 
   it("throws only for missing vars, not present ones", () => {
-    process.env["PRESENT_VAR"] = "set";
-    delete process.env["ABSENT_VAR"];
+    process.env.PRESENT_VAR = "set";
+    process.env.ABSENT_VAR = undefined;
     expect(() => validateEnv(["PRESENT_VAR", "ABSENT_VAR"])).toThrow("ABSENT_VAR");
-    delete process.env["PRESENT_VAR"];
+    process.env.PRESENT_VAR = undefined;
   });
 });

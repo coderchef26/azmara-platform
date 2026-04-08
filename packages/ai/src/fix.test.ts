@@ -1,7 +1,7 @@
-import { describe, expect, it, vi, beforeEach } from "vitest";
-import path from "node:path";
-import os from "node:os";
 import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 // Mock isolated-vm so tests run without native compilation
 vi.mock("isolated-vm", () => ({
@@ -27,9 +27,7 @@ describe("autoFix — path validation", () => {
     const { autoFix } = await import("./fix.js");
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-ai-test-"));
 
-    await expect(
-      autoFix(path.join(dir, "../../etc/passwd"), dir),
-    ).rejects.toThrow();
+    await expect(autoFix(path.join(dir, "../../etc/passwd"), dir)).rejects.toThrow();
 
     fs.rmSync(dir, { recursive: true });
   });
@@ -38,9 +36,7 @@ describe("autoFix — path validation", () => {
     const { autoFix } = await import("./fix.js");
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-ai-test-"));
 
-    await expect(
-      autoFix(path.join(dir, "file\0.ts"), dir),
-    ).rejects.toThrow();
+    await expect(autoFix(path.join(dir, "file\0.ts"), dir)).rejects.toThrow();
 
     fs.rmSync(dir, { recursive: true });
   });
@@ -51,12 +47,12 @@ describe("autoFix — path validation", () => {
     const file = path.join(dir, "test.ts");
     fs.writeFileSync(file, "const x = 1;");
 
-    const prev = process.env["OPENAI_API_KEY"];
-    delete process.env["OPENAI_API_KEY"];
+    const prev = process.env.OPENAI_API_KEY;
+    process.env.OPENAI_API_KEY = undefined;
 
     await expect(autoFix(file, dir)).rejects.toThrow("OPENAI_API_KEY");
 
-    if (prev !== undefined) process.env["OPENAI_API_KEY"] = prev;
+    if (prev !== undefined) process.env.OPENAI_API_KEY = prev;
     fs.rmSync(dir, { recursive: true });
   });
 });
