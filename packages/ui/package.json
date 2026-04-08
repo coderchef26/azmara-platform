@@ -1,9 +1,19 @@
 {
   "name": "@azmara/ui",
   "version": "0.0.1",
-  "private": true,
-  "description": "React UI components — Grid, Form — wired to reactive Signals",
+  "description": "React UI components wired to reactive Signals — Grid, useSignal",
   "type": "module",
+  "license": "MIT",
+  "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",
+  "homepage": "https://docs.azmara.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderchef26/azmara-platform.git",
+    "directory": "packages/ui"
+  },
+  "keywords": ["react", "components", "grid", "reactive", "signals", "data-table", "azmara"],
+  "engines": { "node": ">=18.0.0" },
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
       "import": "./dist/index.js",

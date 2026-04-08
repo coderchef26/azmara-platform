@@ -1,9 +1,19 @@
 {
   "name": "@azmara/db",
   "version": "0.0.1",
-  "private": true,
-  "description": "SQLite persistence adapter with parameterised queries, identifier validation, and audit logging",
+  "description": "Secure SQLite persistence adapter — parameterised queries, path containment, tamper-evident audit log",
   "type": "module",
+  "license": "MIT",
+  "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",
+  "homepage": "https://docs.azmara.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderchef26/azmara-platform.git",
+    "directory": "packages/db"
+  },
+  "keywords": ["sqlite", "database", "local-first", "offline", "reactive", "secure", "azmara"],
+  "engines": { "node": ">=18.0.0" },
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
       "import": "./dist/index.js",

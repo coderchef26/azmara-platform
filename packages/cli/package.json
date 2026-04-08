@@ -1,9 +1,19 @@
 {
   "name": "@azmara/cli",
   "version": "0.0.1",
-  "private": true,
-  "description": "Azmara CLI — scaffold, query, and manage your Azmara platform",
+  "description": "Azmara CLI — scaffold apps, query local SQLite databases, manage your platform",
   "type": "module",
+  "license": "MIT",
+  "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",
+  "homepage": "https://docs.azmara.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderchef26/azmara-platform.git",
+    "directory": "packages/cli"
+  },
+  "keywords": ["cli", "scaffold", "sqlite", "developer-tools", "azmara"],
+  "engines": { "node": ">=18.0.0" },
+  "files": ["dist", "README.md", "LICENSE"],
   "bin": {
     "azmara": "./dist/index.js"
   },

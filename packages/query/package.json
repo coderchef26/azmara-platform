@@ -1,9 +1,19 @@
 {
   "name": "@azmara/query",
   "version": "0.0.1",
-  "private": true,
   "description": "Chainable, data-first query engine over reactive data sources",
   "type": "module",
+  "license": "MIT",
+  "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",
+  "homepage": "https://docs.azmara.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderchef26/azmara-platform.git",
+    "directory": "packages/query"
+  },
+  "keywords": ["query", "filter", "sort", "data", "reactive", "typesafe", "azmara"],
+  "engines": { "node": ">=18.0.0" },
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
       "import": "./dist/index.js",

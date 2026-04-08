@@ -1,9 +1,19 @@
 {
   "name": "@azmara/core",
   "version": "0.0.1",
-  "private": true,
   "description": "Reactive engine — signals, effects, computed values",
   "type": "module",
+  "license": "MIT",
+  "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",
+  "homepage": "https://docs.azmara.io",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderchef26/azmara-platform.git",
+    "directory": "packages/core"
+  },
+  "keywords": ["reactive", "signals", "computed", "effects", "state-management", "azmara"],
+  "engines": { "node": ">=18.0.0" },
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
