@@ -48,7 +48,8 @@ describe("autoFix — path validation", () => {
     fs.writeFileSync(file, "const x = 1;");
 
     const prev = process.env.OPENAI_API_KEY;
-    process.env.OPENAI_API_KEY = undefined;
+    // biome-ignore lint/performance/noDelete: delete is required — setting to undefined leaves the string "undefined" in process.env
+    delete process.env.OPENAI_API_KEY;
 
     await expect(autoFix(file, dir)).rejects.toThrow("OPENAI_API_KEY");
 

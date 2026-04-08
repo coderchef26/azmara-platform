@@ -45,18 +45,22 @@ describe("validateEnv", () => {
   it("passes when all required vars are set", () => {
     process.env.TEST_VAR_A = "value";
     expect(() => validateEnv(["TEST_VAR_A"])).not.toThrow();
-    process.env.TEST_VAR_A = undefined;
+    // biome-ignore lint/performance/noDelete: delete is required — setting to undefined leaves the string "undefined" in process.env
+    delete process.env.TEST_VAR_A;
   });
 
   it("throws listing missing vars", () => {
-    process.env.MISSING_VAR_X = undefined;
+    // biome-ignore lint/performance/noDelete: delete is required — setting to undefined leaves the string "undefined" in process.env
+    delete process.env.MISSING_VAR_X;
     expect(() => validateEnv(["MISSING_VAR_X"])).toThrow("MISSING_VAR_X");
   });
 
   it("throws only for missing vars, not present ones", () => {
     process.env.PRESENT_VAR = "set";
-    process.env.ABSENT_VAR = undefined;
+    // biome-ignore lint/performance/noDelete: delete is required — setting to undefined leaves the string "undefined" in process.env
+    delete process.env.ABSENT_VAR;
     expect(() => validateEnv(["PRESENT_VAR", "ABSENT_VAR"])).toThrow("ABSENT_VAR");
-    process.env.PRESENT_VAR = undefined;
+    // biome-ignore lint/performance/noDelete: delete is required — setting to undefined leaves the string "undefined" in process.env
+    delete process.env.PRESENT_VAR;
   });
 });
