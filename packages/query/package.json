@@ -12,7 +12,9 @@
     "directory": "packages/query"
   },
   "keywords": ["query", "filter", "sort", "data", "reactive", "typesafe", "azmara"],
-  "engines": { "node": ">=18.0.0" },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
@@ -34,5 +36,8 @@
     "tsup": "^8.3.5",
     "typescript": "^5.7.3",
     "vitest": "^2.1.9"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
