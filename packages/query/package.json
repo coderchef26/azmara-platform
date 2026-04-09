@@ -1,5 +1,5 @@
 {
-  "name": "@azmara/query",
+  "name": "@azmr/query",
   "version": "0.0.1",
   "description": "Chainable, data-first query engine over reactive data sources",
   "type": "module",
@@ -30,7 +30,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@azmara/core": "workspace:*"
+    "@azmr/core": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^8.3.5",

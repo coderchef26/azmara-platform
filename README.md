@@ -5,9 +5,9 @@
 The Azmara Platform is a TypeScript monorepo that brings back the simplicity of data-first development. Define your data once, and everything else — UI, logic, queries, persistence — derives from it reactively.
 
 ```typescript
-import { Signal, computed } from "@azmara/core";
-import { query } from "@azmara/query";
-import { SQLiteAdapter } from "@azmara/db";
+import { Signal, computed } from "@azmr/core";
+import { query } from "@azmr/query";
+import { SQLiteAdapter } from "@azmr/db";
 
 // Define reactive data
 const products = new Signal([
@@ -33,12 +33,12 @@ db.insertMany("products", available.map(p => ({ ...p, inStock: 1 })));
 
 | Package | Description | Version |
 |---|---|---|
-| [`@azmara/core`](packages/core) | Reactive signals, effects, and computed values | 0.0.1 |
-| [`@azmara/query`](packages/query) | Chainable, type-safe query builder | 0.0.1 |
-| [`@azmara/security`](packages/security) | Validation, audit logging, env guards | 0.0.1 |
-| [`@azmara/db`](packages/db) | Secure SQLite persistence adapter | 0.0.1 |
-| [`@azmara/ui`](packages/ui) | React components wired to Signals | 0.0.1 |
-| [`@azmara/cli`](packages/cli) | CLI — scaffold apps, query databases | 0.0.1 |
+| [`@azmr/core`](packages/core) | Reactive signals, effects, and computed values | 0.0.1 |
+| [`@azmr/query`](packages/query) | Chainable, type-safe query builder | 0.0.1 |
+| [`@azmr/security`](packages/security) | Validation, audit logging, env guards | 0.0.1 |
+| [`@azmr/db`](packages/db) | Secure SQLite persistence adapter | 0.0.1 |
+| [`@azmr/ui`](packages/ui) | React components wired to Signals | 0.0.1 |
+| [`@azmr/cli`](packages/cli) | CLI — scaffold apps, query databases | 0.0.1 |
 
 ---
 
@@ -47,7 +47,7 @@ db.insertMany("products", available.map(p => ({ ...p, inStock: 1 })));
 ### Scaffold a new app
 
 ```bash
-npx @azmara/cli init my-app
+npx @azmr/cli init my-app
 cd my-app
 pnpm install
 pnpm dev
@@ -56,10 +56,10 @@ pnpm dev
 ### Install individual packages
 
 ```bash
-pnpm add @azmara/core @azmara/query
-pnpm add @azmara/db          # SQLite — requires node-gyp
-pnpm add @azmara/ui          # React components
-pnpm add -g @azmara/cli      # CLI tool
+pnpm add @azmr/core @azmr/query
+pnpm add @azmr/db          # SQLite — requires node-gyp
+pnpm add @azmr/ui          # React components
+pnpm add -g @azmr/cli      # CLI tool
 ```
 
 ---
@@ -67,13 +67,13 @@ pnpm add -g @azmara/cli      # CLI tool
 ## Architecture
 
 ```
-@azmara/security          ← foundation — no internal deps
+@azmr/security          ← foundation — no internal deps
     ↑
-@azmara/core              ← Signal reactive engine
-@azmara/db                ← SQLite adapter (depends: security)
-@azmara/query             ← query builder (depends: core)
-@azmara/ui                ← React components (depends: core)
-@azmara/cli               ← CLI (depends: core, db, security)
+@azmr/core              ← Signal reactive engine
+@azmr/db                ← SQLite adapter (depends: security)
+@azmr/query             ← query builder (depends: core)
+@azmr/ui                ← React components (depends: core)
+@azmr/cli               ← CLI (depends: core, db, security)
 ```
 
 ---
@@ -99,16 +99,16 @@ pnpm test
 
 ```bash
 # Node.js console demo
-pnpm --filter @azmara/playground dev
+pnpm --filter @azmr/playground dev
 
 # Visual browser playground (localhost:5173)
-pnpm --filter @azmara/playground web
+pnpm --filter @azmr/playground web
 ```
 
 ### Run docs locally
 
 ```bash
-pnpm --filter @azmara/docs start
+pnpm --filter @azmr/docs start
 ```
 
 ### Commands

@@ -1,5 +1,5 @@
 import path from "node:path";
-import { assertSafeIdentifier, assertSafePath, createAuditLogger } from "@azmara/security";
+import { assertSafeIdentifier, assertSafePath, createAuditLogger } from "@azmr/security";
 import Database from "better-sqlite3";
 
 export type ColumnType = "string" | "number" | "boolean";

@@ -4,12 +4,12 @@ sidebar_position: 3
 
 # Playground
 
-The `apps/playground` app is a runnable demo that exercises `@azmara/core`, `@azmara/query`, and `@azmara/db` together.
+The `apps/playground` app is a runnable demo that exercises `@azmr/core`, `@azmr/query`, and `@azmr/db` together.
 
 ## Run it
 
 ```bash
-pnpm --filter @azmara/playground dev
+pnpm --filter @azmr/playground dev
 ```
 
 ## What it demonstrates

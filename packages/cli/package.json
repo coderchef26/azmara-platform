@@ -1,5 +1,5 @@
 {
-  "name": "@azmara/cli",
+  "name": "@azmr/cli",
   "version": "0.0.1",
   "description": "Azmara CLI \u00e2\u20ac\u201d scaffold apps, query local SQLite databases, manage your platform",
   "type": "module",
@@ -33,9 +33,9 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@azmara/core": "workspace:*",
-    "@azmara/db": "workspace:*",
-    "@azmara/security": "workspace:*"
+    "@azmr/core": "workspace:*",
+    "@azmr/db": "workspace:*",
+    "@azmr/security": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

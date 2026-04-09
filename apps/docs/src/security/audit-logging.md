@@ -1,6 +1,6 @@
 # Audit Logging
 
-`@azmara/security` provides a tamper-evident audit logger used across all platform packages.
+`@azmr/security` provides a tamper-evident audit logger used across all platform packages.
 
 ## How it works
 
@@ -17,7 +17,7 @@ Modifying any entry changes its hash, breaking the chain from that point forward
 ## Usage
 
 ```typescript
-import { createAuditLogger } from "@azmara/security";
+import { createAuditLogger } from "@azmr/security";
 
 const audit = createAuditLogger("my-service");
 

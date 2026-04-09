@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Audit Logging
 
-Every mutation in `@azmara/db` and every AI fix attempt is written to a tamper-evident audit log.
+Every mutation in `@azmr/db` and every AI fix attempt is written to a tamper-evident audit log.
 
 ## How the hash chain works
 
@@ -19,7 +19,7 @@ Modifying entry 2's content changes its hash. Entry 3's `prevHash` then no longe
 ## Usage
 
 ```typescript
-import { createAuditLogger } from "@azmara/security";
+import { createAuditLogger } from "@azmr/security";
 
 const audit = createAuditLogger("payments");
 

@@ -1,5 +1,5 @@
 {
-  "name": "@azmara/core",
+  "name": "@azmr/core",
   "version": "0.0.1",
   "description": "Reactive engine \u00e2\u20ac\u201d signals, effects, computed values",
   "type": "module",

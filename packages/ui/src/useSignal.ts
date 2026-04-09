@@ -1,4 +1,4 @@
-import type { Signal } from "@azmara/core";
+import type { Signal } from "@azmr/core";
 import { useEffect, useState } from "react";
 
 /**

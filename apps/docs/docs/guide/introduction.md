@@ -27,10 +27,10 @@ Unlike modern stacks that bolt a database onto the side of a framework, Azmara p
 
 | Package | Purpose |
 |---|---|
-| `@azmara/core` | Reactive signals, effects, computed values |
-| `@azmara/query` | Chainable, data-first query builder |
-| `@azmara/db` | Secure SQLite adapter |
-| `@azmara/ui` | React components wired to signals |
-| `@azmara/ai` | AI auto-fix with isolated-vm sandbox |
-| `@azmara/security` | Validation, audit logging, sanitisation |
-| `@azmara/cli` | Command-line tooling |
+| `@azmr/core` | Reactive signals, effects, computed values |
+| `@azmr/query` | Chainable, data-first query builder |
+| `@azmr/db` | Secure SQLite adapter |
+| `@azmr/ui` | React components wired to signals |
+| `@azmr/ai` | AI auto-fix with isolated-vm sandbox |
+| `@azmr/security` | Validation, audit logging, sanitisation |
+| `@azmr/cli` | Command-line tooling |

@@ -1,20 +1,20 @@
-# @azmara/ui
+# @azmr/ui
 
 React components wired to reactive Signals. The `Grid` component re-renders automatically when its Signal changes — no state management needed.
 
 ## Install
 
 ```bash
-pnpm add @azmara/ui @azmara/core react react-dom
+pnpm add @azmr/ui @azmr/core react react-dom
 # or
-npm install @azmara/ui @azmara/core react react-dom
+npm install @azmr/ui @azmr/core react react-dom
 ```
 
 ## Grid
 
 ```tsx
-import { Signal } from "@azmara/core";
-import { Grid } from "@azmara/ui";
+import { Signal } from "@azmr/core";
+import { Grid } from "@azmr/ui";
 
 const customers = new Signal([
   { name: "Aroha", balance: 150 },
@@ -39,7 +39,7 @@ customers.set([...customers.peek(), { name: "Tane", balance: 0 }]);
 Hook to subscribe any React component to a Signal.
 
 ```tsx
-import { useSignal } from "@azmara/ui";
+import { useSignal } from "@azmr/ui";
 
 function Counter({ count }: { count: Signal<number> }) {
   const value = useSignal(count); // push-based, no polling

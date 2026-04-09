@@ -10,12 +10,12 @@ Security is not an add-on in Azmara — it is baked into every layer from the gr
 
 | Threat | Where | Mitigation |
 |---|---|---|
-| SQL injection | `@azmara/db` | Parameterised queries only; identifier validation |
-| Path traversal | `@azmara/db`, `@azmara/ai` | `assertSafePath()` on all file operations |
-| Eval / code injection | `@azmara/ai` | No `eval`; AI code runs in V8 isolate (isolated-vm) |
-| XSS | `@azmara/ui` | React JSX escaping; no `dangerouslySetInnerHTML` |
-| Reactive infinite loops | `@azmara/core` | Effect depth limit (100) with descriptive error |
-| Log tampering | `@azmara/security` | SHA-256 hash chain — any modification breaks chain |
+| SQL injection | `@azmr/db` | Parameterised queries only; identifier validation |
+| Path traversal | `@azmr/db`, `@azmr/ai` | `assertSafePath()` on all file operations |
+| Eval / code injection | `@azmr/ai` | No `eval`; AI code runs in V8 isolate (isolated-vm) |
+| XSS | `@azmr/ui` | React JSX escaping; no `dangerouslySetInnerHTML` |
+| Reactive infinite loops | `@azmr/core` | Effect depth limit (100) with descriptive error |
+| Log tampering | `@azmr/security` | SHA-256 hash chain — any modification breaks chain |
 | Missing secrets | All | `validateEnv()` fails fast at startup |
 | Dependency attacks | Root | `pnpm.onlyBuiltDependencies` allowlist; `pnpm audit` |
 
@@ -37,12 +37,12 @@ Security is not an add-on in Azmara — it is baked into every layer from the gr
 
 ```
 ┌─────────────────────────────────┐
-│  @azmara/security               │  ← Validation, audit log, sanitisation
+│  @azmr/security               │  ← Validation, audit log, sanitisation
 ├─────────────────────────────────┤
-│  @azmara/db                     │  ← Parameterised SQL, identifier guards
+│  @azmr/db                     │  ← Parameterised SQL, identifier guards
 ├─────────────────────────────────┤
-│  @azmara/ai                     │  ← V8 isolate sandbox (isolated-vm)
+│  @azmr/ai                     │  ← V8 isolate sandbox (isolated-vm)
 ├─────────────────────────────────┤
-│  @azmara/core                   │  ← Effect depth guard
+│  @azmr/core                   │  ← Effect depth guard
 └─────────────────────────────────┘
 ```

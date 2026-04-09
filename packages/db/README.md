@@ -1,13 +1,13 @@
-# @azmara/db
+# @azmr/db
 
 Secure SQLite persistence adapter built on `better-sqlite3`. Parameterised queries only, identifier validation, path containment, WAL mode, and a tamper-evident audit log baked in.
 
 ## Install
 
 ```bash
-pnpm add @azmara/db
+pnpm add @azmr/db
 # or
-npm install @azmara/db
+npm install @azmr/db
 ```
 
 > **Note**: `better-sqlite3` is a native module. Node.js build tools are required — see [better-sqlite3 prerequisites](https://github.com/WiseLibs/better-sqlite3/blob/master/docs/compilation.md).
@@ -15,7 +15,7 @@ npm install @azmara/db
 ## Usage
 
 ```typescript
-import { SQLiteAdapter } from "@azmara/db";
+import { SQLiteAdapter } from "@azmr/db";
 
 const db = new SQLiteAdapter(".azmara/app.db", ".azmara");
 

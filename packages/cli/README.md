@@ -1,13 +1,13 @@
-# @azmara/cli
+# @azmr/cli
 
 The Azmara CLI — scaffold new apps, query local SQLite databases, and manage your platform from the terminal.
 
 ## Install
 
 ```bash
-pnpm add -g @azmara/cli
+pnpm add -g @azmr/cli
 # or
-npm install -g @azmara/cli
+npm install -g @azmr/cli
 ```
 
 ## Commands
@@ -26,7 +26,7 @@ pnpm dev
 Creates:
 ```
 my-app/
-├── package.json      (@azmara/core, @azmara/db, @azmara/query)
+├── package.json      (@azmr/core, @azmr/db, @azmr/query)
 ├── tsconfig.json
 ├── .gitignore
 ├── .env.example

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { SQLiteAdapter } from "@azmara/db";
-import { sanitiseForLog } from "@azmara/security";
+import { SQLiteAdapter } from "@azmr/db";
+import { sanitiseForLog } from "@azmr/security";
 import { renderTable } from "../utils/table.js";
 
 /**

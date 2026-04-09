@@ -1,5 +1,5 @@
 {
-  "name": "@azmara/ai",
+  "name": "@azmr/ai",
   "version": "0.0.1",
   "private": true,
   "description": "AI auto-fix system with isolated-vm sandboxing — safe code execution and analysis",
@@ -18,7 +18,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@azmara/security": "workspace:*",
+    "@azmr/security": "workspace:*",
     "isolated-vm": "^5.0.1"
   },
   "devDependencies": {

@@ -10,14 +10,14 @@ Security is not an add-on in Azmara — it is baked into every layer.
 | Path traversal | `assertSafePath()` checks all file operations |
 | Eval / code injection | No `eval`, no string predicates; AI code runs in V8 isolate |
 | XSS | React JSX escaping; no `dangerouslySetInnerHTML` |
-| Infinite loops | Effect depth limit (100) in `@azmara/core` |
+| Infinite loops | Effect depth limit (100) in `@azmr/core` |
 | Log tampering | SHA-256 hash chain in audit log |
 | Secrets exposure | `validateEnv()` fails fast; `.env` never committed |
 | Dependency attacks | `pnpm audit` in CI; `onlyBuiltDependencies` allowlist |
 
 ## Audit logging
 
-Every mutation in `@azmara/db` and every AI fix attempt is written to a tamper-evident log. Each entry contains a SHA-256 hash of its content chained to the previous entry — modifying any entry breaks the chain.
+Every mutation in `@azmr/db` and every AI fix attempt is written to a tamper-evident log. Each entry contains a SHA-256 hash of its content chained to the previous entry — modifying any entry breaks the chain.
 
 See [Audit Logging](/security/audit-logging) for details.
 

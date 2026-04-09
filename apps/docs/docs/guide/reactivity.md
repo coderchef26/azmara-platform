@@ -46,10 +46,10 @@ You don't declare dependencies manually. The reactive system tracks which Signal
 
 ## Connecting to React
 
-Use `useSignal` from `@azmara/ui` to bridge Signals into React components:
+Use `useSignal` from `@azmr/ui` to bridge Signals into React components:
 
 ```tsx
-import { useSignal } from "@azmara/ui";
+import { useSignal } from "@azmr/ui";
 
 function TotalDisplay({ total }: { total: Signal<number> }) {
   const value = useSignal(total);

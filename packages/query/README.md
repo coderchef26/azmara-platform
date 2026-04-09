@@ -1,19 +1,19 @@
-# @azmara/query
+# @azmr/query
 
 Chainable, type-safe query builder for arrays and reactive Signals. Filter, sort, limit, and paginate data with zero boilerplate.
 
 ## Install
 
 ```bash
-pnpm add @azmara/query @azmara/core
+pnpm add @azmr/query @azmr/core
 # or
-npm install @azmara/query @azmara/core
+npm install @azmr/query @azmr/core
 ```
 
 ## Usage
 
 ```typescript
-import { query } from "@azmara/query";
+import { query } from "@azmr/query";
 
 const customers = [
   { name: "Aroha", balance: 150 },
@@ -31,8 +31,8 @@ const result = query(customers)
 ## With a reactive Signal
 
 ```typescript
-import { Signal } from "@azmara/core";
-import { query } from "@azmara/query";
+import { Signal } from "@azmr/core";
+import { query } from "@azmr/query";
 
 const data = new Signal(customers);
 

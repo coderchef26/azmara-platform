@@ -1,19 +1,19 @@
-# @azmara/core
+# @azmr/core
 
 Reactive engine for the Azmara platform — signals, effects, and computed values with a batch scheduler that eliminates double-firing.
 
 ## Install
 
 ```bash
-pnpm add @azmara/core
+pnpm add @azmr/core
 # or
-npm install @azmara/core
+npm install @azmr/core
 ```
 
 ## Usage
 
 ```typescript
-import { Signal, computed, effect } from "@azmara/core";
+import { Signal, computed, effect } from "@azmr/core";
 
 const count = new Signal(0);
 const doubled = computed(() => count.get() * 2);
