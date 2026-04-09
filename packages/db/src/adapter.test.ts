@@ -1,8 +1,8 @@
-import { describe, expect, it, afterEach } from "vitest";
-import { SQLiteAdapter } from "./adapter.js";
+import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import fs from "node:fs";
+import { describe, expect, it } from "vitest";
+import { SQLiteAdapter } from "./adapter.js";
 
 function tmpDb(): { db: SQLiteAdapter; dir: string } {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-test-"));
@@ -47,18 +47,14 @@ describe("SQLiteAdapter — createTable / insert / getAll", () => {
 describe("SQLiteAdapter — identifier injection protection", () => {
   it("blocks SQL injection in table name", () => {
     const { db, dir } = tmpDb();
-    expect(() =>
-      db.createTable("users; DROP TABLE users; --", { name: "string" }),
-    ).toThrow();
+    expect(() => db.createTable("users; DROP TABLE users; --", { name: "string" })).toThrow();
     db.close();
     fs.rmSync(dir, { recursive: true });
   });
 
   it("blocks SQL injection in column name", () => {
     const { db, dir } = tmpDb();
-    expect(() =>
-      db.createTable("safe", { "col; DROP TABLE safe; --": "string" }),
-    ).toThrow();
+    expect(() => db.createTable("safe", { "col; DROP TABLE safe; --": "string" })).toThrow();
     db.close();
     fs.rmSync(dir, { recursive: true });
   });
@@ -81,17 +77,13 @@ describe("SQLiteAdapter — identifier injection protection", () => {
 describe("SQLiteAdapter — path traversal protection", () => {
   it("blocks path traversal outside allowed base", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-test-"));
-    expect(() =>
-      new SQLiteAdapter(path.join(dir, "../../etc/evil.db"), dir),
-    ).toThrow();
+    expect(() => new SQLiteAdapter(path.join(dir, "../../etc/evil.db"), dir)).toThrow();
     fs.rmSync(dir, { recursive: true });
   });
 
   it("blocks null byte in path", () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), "azmara-test-"));
-    expect(() =>
-      new SQLiteAdapter(path.join(dir, "file\0.db"), dir),
-    ).toThrow();
+    expect(() => new SQLiteAdapter(path.join(dir, "file\0.db"), dir)).toThrow();
     fs.rmSync(dir, { recursive: true });
   });
 });

@@ -93,9 +93,7 @@ export class QueryBuilder<T> {
 
 function isSignal<T>(value: unknown): value is Signal<T> {
   return (
-    typeof value === "object" &&
-    value !== null &&
-    typeof (value as Signal<T>).get === "function"
+    typeof value === "object" && value !== null && typeof (value as Signal<T>).get === "function"
   );
 }
 

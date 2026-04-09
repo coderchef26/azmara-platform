@@ -1,3 +1,5 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 /**
  * Azmara Playground
  * Demonstrates core + query + db working together.
@@ -5,9 +7,6 @@
 import { Signal, computed, effect } from "@azmara/core";
 import { SQLiteAdapter } from "@azmara/db";
 import { query } from "@azmara/query";
-import { validateEnv } from "@azmara/security";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DB_PATH = path.join(__dirname, "../.azmara/playground.db");

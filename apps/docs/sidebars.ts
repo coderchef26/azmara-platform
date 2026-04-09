@@ -6,19 +6,12 @@ const sidebars: SidebarsConfig = {
       type: "category",
       label: "Getting Started",
       collapsed: false,
-      items: [
-        "guide/introduction",
-        "guide/installation",
-        "guide/playground",
-      ],
+      items: ["guide/introduction", "guide/installation", "guide/playground"],
     },
     {
       type: "category",
       label: "Concepts",
-      items: [
-        "guide/reactivity",
-        "guide/data-first",
-      ],
+      items: ["guide/reactivity", "guide/data-first"],
     },
   ],
 

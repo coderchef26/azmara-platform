@@ -33,6 +33,14 @@
     }
   },
   "files": {
-    "ignore": ["dist/**", "node_modules/**", "*.d.ts", ".turbo/**"]
+    "ignore": [
+      "dist/**",
+      "node_modules/**",
+      "*.d.ts",
+      ".turbo/**",
+      "**/.docusaurus/**",
+      "**/build/**",
+      ".claude/**"
+    ]
   }
 }

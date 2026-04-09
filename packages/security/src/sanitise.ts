@@ -6,7 +6,7 @@ export function sanitiseForLog(value: unknown, maxLength = 200): string {
   const str = String(value)
     .replace(/\0/g, "") // strip null bytes
     .replace(/[\r\n]/g, " "); // flatten newlines (prevent log injection)
-  return str.length > maxLength ? str.slice(0, maxLength) + "…" : str;
+  return str.length > maxLength ? `${str.slice(0, maxLength)}…` : str;
 }
 
 /**
@@ -32,9 +32,7 @@ import path from "node:path";
 
 export function assertSafePath(filePath: string, allowedBase: string): void {
   if (filePath.includes("\0")) {
-    throw new Error(
-      `[azmara/security] Null byte detected in path: "${sanitiseForLog(filePath)}"`,
-    );
+    throw new Error(`[azmara/security] Null byte detected in path: "${sanitiseForLog(filePath)}"`);
   }
   const resolved = path.resolve(filePath);
   const base = path.resolve(allowedBase);

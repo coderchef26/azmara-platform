@@ -26,6 +26,7 @@ export function Grid<T extends Record<string, unknown>>({
     return <p style={{ color: "#888", fontStyle: "italic" }}>{emptyMessage}</p>;
   }
 
+  // biome-ignore lint/style/noNonNullAssertion: data.length === 0 checked above
   const cols = (columns ?? Object.keys(data[0]!)) as (keyof T)[];
 
   return (
@@ -52,10 +53,7 @@ export function Grid<T extends Record<string, unknown>>({
       <tbody>
         {data.map((row, rowIndex) => (
           // biome-ignore lint/suspicious/noArrayIndexKey: row has no guaranteed unique ID at this layer
-          <tr
-            key={rowIndex}
-            style={{ backgroundColor: rowIndex % 2 === 0 ? "#fff" : "#f9fafb" }}
-          >
+          <tr key={rowIndex} style={{ backgroundColor: rowIndex % 2 === 0 ? "#fff" : "#f9fafb" }}>
             {cols.map((col) => (
               <td
                 key={String(col)}

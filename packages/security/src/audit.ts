@@ -19,9 +19,7 @@ interface AuditEntry {
  * IMPORTANT: Never log passwords, tokens, or PII in `meta`.
  */
 export function createAuditLogger(context: string) {
-  const logPath = path.resolve(
-    process.env["AZMARA_AUDIT_LOG"] ?? ".azmara/audit.log",
-  );
+  const logPath = path.resolve(process.env.AZMARA_AUDIT_LOG ?? ".azmara/audit.log");
   fs.mkdirSync(path.dirname(logPath), { recursive: true });
 
   let lastHash = "";
@@ -35,12 +33,9 @@ export function createAuditLogger(context: string) {
         meta,
         prevHash: lastHash,
       };
-      const hash = crypto
-        .createHash("sha256")
-        .update(JSON.stringify(base))
-        .digest("hex");
+      const hash = crypto.createHash("sha256").update(JSON.stringify(base)).digest("hex");
       lastHash = hash;
-      const line = JSON.stringify({ ...base, hash } satisfies AuditEntry) + "\n";
+      const line = `${JSON.stringify({ ...base, hash } satisfies AuditEntry)}\n`;
       fs.appendFileSync(logPath, line, { encoding: "utf-8" });
     },
   };

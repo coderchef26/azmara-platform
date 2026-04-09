@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from "react";
 import { Signal, computed } from "@azmara/core";
-import { useSignal } from "@azmara/ui";
 import { query } from "@azmara/query";
+import { useSignal } from "@azmara/ui";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // ── Signals (module-level — stable across renders) ─────────────────────────
 const count = new Signal(0);
@@ -11,9 +11,9 @@ const squared = computed(() => count.get() * count.get());
 // ── Static data ────────────────────────────────────────────────────────────
 const CUSTOMERS = [
   { name: "Aroha", city: "WLG", balance: 150 },
-  { name: "Tane",  city: "AKL", balance: 0 },
-  { name: "Mere",  city: "AKL", balance: 320 },
-  { name: "Hemi",  city: "CHC", balance: -10 },
+  { name: "Tane", city: "AKL", balance: 0 },
+  { name: "Mere", city: "AKL", balance: 320 },
+  { name: "Hemi", city: "CHC", balance: -10 },
   { name: "Rangi", city: "CHC", balance: 75 },
 ];
 
@@ -21,12 +21,12 @@ type Product = { name: string; price: number; inStock: boolean };
 const DEFAULT_PRODUCTS: Product[] = [
   { name: "Widget A", price: 29.99, inStock: true },
   { name: "Widget B", price: 49.99, inStock: false },
-  { name: "Widget C", price: 9.99,  inStock: true },
+  { name: "Widget C", price: 9.99, inStock: true },
 ];
 const NEW_PRODUCTS: Product[] = [
-  { name: "Gadget X",  price: 89.99,  inStock: true },
-  { name: "Module Y",  price: 14.99,  inStock: true },
-  { name: "Sensor Z",  price: 199.99, inStock: false },
+  { name: "Gadget X", price: 89.99, inStock: true },
+  { name: "Module Y", price: 14.99, inStock: true },
+  { name: "Sensor Z", price: 199.99, inStock: false },
 ];
 
 const productsSignal = new Signal<Product[]>([...DEFAULT_PRODUCTS]);
@@ -110,14 +110,35 @@ function ProductGrid() {
 
 // ── Syntax highlighter ─────────────────────────────────────────────────────
 const KW = new Set([
-  "import","export","from","const","let","var","function","return","new",
-  "true","false","null","undefined","type","interface","extends","class",
-  "async","await","of","for","if","else",
+  "import",
+  "export",
+  "from",
+  "const",
+  "let",
+  "var",
+  "function",
+  "return",
+  "new",
+  "true",
+  "false",
+  "null",
+  "undefined",
+  "type",
+  "interface",
+  "extends",
+  "class",
+  "async",
+  "await",
+  "of",
+  "for",
+  "if",
+  "else",
 ]);
 
 function esc(s: string) {
-  return s.replace(/[&<>"]/g, (c) =>
-    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c] ?? c
+  return s.replace(
+    /[&<>"]/g,
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c] ?? c,
   );
 }
 
@@ -150,8 +171,10 @@ function highlight(code: string): string {
     }
 
     // Number
+    // biome-ignore lint/style/noNonNullAssertion: loop bounds guarantee i < code.length
     if (/\d/.test(code[i]!) && (i === 0 || !/\w/.test(code[i - 1]!))) {
       let j = i;
+      // biome-ignore lint/style/noNonNullAssertion: j < code.length checked in while condition
       while (j < code.length && /[\d.]/.test(code[j]!)) j++;
       result += `<span class="tok-num">${esc(code.slice(i, j))}</span>`;
       i = j;
@@ -159,8 +182,10 @@ function highlight(code: string): string {
     }
 
     // Word
+    // biome-ignore lint/style/noNonNullAssertion: loop bounds guarantee i < code.length
     if (/[a-zA-Z_$]/.test(code[i]!)) {
       let j = i;
+      // biome-ignore lint/style/noNonNullAssertion: j < code.length checked in while condition
       while (j < code.length && /[a-zA-Z0-9_$]/.test(code[j]!)) j++;
       const word = code.slice(i, j);
       if (KW.has(word)) {
@@ -174,6 +199,7 @@ function highlight(code: string): string {
       continue;
     }
 
+    // biome-ignore lint/style/noNonNullAssertion: loop bounds guarantee i < code.length
     result += esc(code[i]!);
     i++;
   }
@@ -196,10 +222,7 @@ function CodeBlock({ code, open }: { code: string; open: boolean }) {
     <div className={`code-section${open ? " open" : ""}`}>
       <div className="code-header">
         <span className="code-lang">typescript</span>
-        <button
-          className={`copy-btn${copied ? " copied" : ""}`}
-          onClick={copy}
-        >
+        <button type="button" className={`copy-btn${copied ? " copied" : ""}`} onClick={copy}>
           {copied ? "✓ copied" : "copy"}
         </button>
       </div>
@@ -245,11 +268,11 @@ function useFlashBlue(value: unknown) {
 // ── Reactive Engine Panel ──────────────────────────────────────────────────
 function SignalPanel() {
   const [showCode, setShowCode] = useState(false);
-  const countVal   = useSignal(count);
+  const countVal = useSignal(count);
   const doubledVal = useSignal(doubled);
   const squaredVal = useSignal(squared);
 
-  const countRef   = useFlash(countVal);
+  const countRef = useFlash(countVal);
   const doubledRef = useFlashBlue(doubledVal);
   const squaredRef = useFlashBlue(squaredVal);
 
@@ -263,6 +286,7 @@ function SignalPanel() {
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <span className="panel-badge">@azmara/core</span>
           <button
+            type="button"
             className={`code-toggle-btn${showCode ? " active" : ""}`}
             onClick={() => setShowCode((v) => !v)}
           >
@@ -276,7 +300,9 @@ function SignalPanel() {
           <span className="signal-label">signal&lt;number&gt;</span>
           <div className="signal-value-wrap">
             <span className="signal-name">count</span>
-            <span className="signal-value" ref={countRef}>{countVal}</span>
+            <span className="signal-value" ref={countRef}>
+              {countVal}
+            </span>
           </div>
         </div>
 
@@ -291,7 +317,9 @@ function SignalPanel() {
           <span className="signal-label">computed — count × 2</span>
           <div className="signal-value-wrap">
             <span className="signal-name">doubled</span>
-            <span className="signal-value computed" ref={doubledRef}>{doubledVal}</span>
+            <span className="signal-value computed" ref={doubledRef}>
+              {doubledVal}
+            </span>
           </div>
         </div>
 
@@ -299,14 +327,22 @@ function SignalPanel() {
           <span className="signal-label">computed — count²</span>
           <div className="signal-value-wrap">
             <span className="signal-name">squared</span>
-            <span className="signal-value computed" ref={squaredRef}>{squaredVal}</span>
+            <span className="signal-value computed" ref={squaredRef}>
+              {squaredVal}
+            </span>
           </div>
         </div>
 
         <div className="controls">
-          <button className="btn danger"  onClick={() => count.set(count.peek() - 1)}>−</button>
-          <button className="btn"         onClick={() => count.set(0)}>reset</button>
-          <button className="btn primary" onClick={() => count.set(count.peek() + 1)}>+</button>
+          <button type="button" className="btn danger" onClick={() => count.set(count.peek() - 1)}>
+            −
+          </button>
+          <button type="button" className="btn" onClick={() => count.set(0)}>
+            reset
+          </button>
+          <button type="button" className="btn primary" onClick={() => count.set(count.peek() + 1)}>
+            +
+          </button>
         </div>
       </div>
 
@@ -335,6 +371,7 @@ function QueryPanel() {
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <span className="panel-badge">@azmara/query</span>
           <button
+            type="button"
             className={`code-toggle-btn${showCode ? " active" : ""}`}
             onClick={() => setShowCode((v) => !v)}
           >
@@ -361,8 +398,7 @@ function QueryPanel() {
 
         <div className="results-meta">
           <span>
-            <span className="results-count">{results.length}</span>
-            /{CUSTOMERS.length} customers
+            <span className="results-count">{results.length}</span>/{CUSTOMERS.length} customers
           </span>
           <span>sorted by balance ↓</span>
         </div>
@@ -433,6 +469,7 @@ function GridPanel() {
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <span className="panel-badge">{products.length} records</span>
           <button
+            type="button"
             className={`code-toggle-btn${showCode ? " active" : ""}`}
             onClick={() => setShowCode((v) => !v)}
           >
@@ -475,9 +512,15 @@ function GridPanel() {
         )}
 
         <div className="controls">
-          <button className="btn primary" onClick={addProduct}>+ add</button>
-          <button className="btn danger"  onClick={removeLast}>− remove</button>
-          <button className="btn"         onClick={reset}>reset</button>
+          <button type="button" className="btn primary" onClick={addProduct}>
+            + add
+          </button>
+          <button type="button" className="btn danger" onClick={removeLast}>
+            − remove
+          </button>
+          <button type="button" className="btn" onClick={reset}>
+            reset
+          </button>
         </div>
       </div>
 

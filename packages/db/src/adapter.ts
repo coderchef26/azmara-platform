@@ -1,6 +1,6 @@
 import path from "node:path";
-import Database from "better-sqlite3";
 import { assertSafeIdentifier, assertSafePath, createAuditLogger } from "@azmara/security";
+import Database from "better-sqlite3";
 
 export type ColumnType = "string" | "number" | "boolean";
 export type ColumnSchema = Record<string, ColumnType>;
@@ -75,6 +75,7 @@ export class SQLiteAdapter {
     assertSafeIdentifier(name, "table name");
     if (rows.length === 0) return;
 
+    // biome-ignore lint/style/noNonNullAssertion: rows.length === 0 checked above
     const keys = Object.keys(rows[0]!);
     for (const key of keys) assertSafeIdentifier(key, "column name");
 

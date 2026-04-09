@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { sanitiseForLog } from "@azmara/security";
-import { init } from "./commands/init.js";
 import { dbQuery } from "./commands/db-query.js";
+import { init } from "./commands/init.js";
 
 const [, , command, ...args] = process.argv;
 
@@ -40,7 +40,7 @@ const COMMANDS: Record<string, (args: string[]) => void | Promise<void>> = {
 
 async function main() {
   if (!command) {
-    COMMANDS["help"]!([]);
+    COMMANDS.help?.([]);
     process.exit(0);
   }
 

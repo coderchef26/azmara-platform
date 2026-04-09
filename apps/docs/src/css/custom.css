@@ -59,7 +59,8 @@ th {
   font-weight: 600;
 }
 
-td, th {
+td,
+th {
   border: 1px solid var(--ifm-color-emphasis-200);
   padding: 8px 16px;
 }

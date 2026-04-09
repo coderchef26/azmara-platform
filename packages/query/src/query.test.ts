@@ -1,5 +1,5 @@
-import { describe, expect, it } from "vitest";
 import { Signal } from "@azmara/core";
+import { describe, expect, it } from "vitest";
 import { query } from "./query.js";
 
 const customers = [
@@ -11,7 +11,9 @@ const customers = [
 
 describe("query — where", () => {
   it("filters by predicate", () => {
-    const result = query(customers).where((c) => c.balance > 0).select();
+    const result = query(customers)
+      .where((c) => c.balance > 0)
+      .select();
     expect(result).toHaveLength(2);
     expect(result.map((c) => c.name)).toContain("Aroha");
     expect(result.map((c) => c.name)).toContain("Mere");
@@ -26,7 +28,9 @@ describe("query — where", () => {
   });
 
   it("returns empty array when nothing matches", () => {
-    const result = query(customers).where((c) => c.balance > 1000).select();
+    const result = query(customers)
+      .where((c) => c.balance > 1000)
+      .select();
     expect(result).toHaveLength(0);
   });
 
@@ -85,24 +89,36 @@ describe("query — limit / offset", () => {
 
 describe("query — count / first", () => {
   it("counts matching rows", () => {
-    expect(query(customers).where((c) => c.balance > 0).count()).toBe(2);
+    expect(
+      query(customers)
+        .where((c) => c.balance > 0)
+        .count(),
+    ).toBe(2);
   });
 
   it("returns first match", () => {
-    const result = query(customers).where((c) => c.balance > 0).first();
+    const result = query(customers)
+      .where((c) => c.balance > 0)
+      .first();
     expect(result).toBeDefined();
     expect(result?.balance).toBeGreaterThan(0);
   });
 
   it("returns undefined when no match", () => {
-    expect(query(customers).where((c) => c.balance > 9999).first()).toBeUndefined();
+    expect(
+      query(customers)
+        .where((c) => c.balance > 9999)
+        .first(),
+    ).toBeUndefined();
   });
 });
 
 describe("query — does not mutate source", () => {
   it("original array is unchanged after sort", () => {
     const original = [...customers];
-    query(customers).orderBy((a, b) => a.balance - b.balance).select();
+    query(customers)
+      .orderBy((a, b) => a.balance - b.balance)
+      .select();
     expect(customers).toEqual(original);
   });
 });
@@ -110,14 +126,18 @@ describe("query — does not mutate source", () => {
 describe("query — Signal source", () => {
   it("reads from a Signal", () => {
     const sig = new Signal(customers);
-    const result = query(sig).where((c) => c.active).select();
+    const result = query(sig)
+      .where((c) => c.active)
+      .select();
     expect(result).toHaveLength(2);
   });
 
   it("reflects Signal updates", () => {
     const sig = new Signal(customers);
     sig.set([{ name: "New", balance: 500, active: true }]);
-    const result = query(sig).where((c) => c.active).select();
+    const result = query(sig)
+      .where((c) => c.active)
+      .select();
     expect(result).toHaveLength(1);
     expect(result[0]?.name).toBe("New");
   });
