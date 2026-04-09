@@ -11,23 +11,11 @@
     "url": "git+https://github.com/coderchef26/azmara-platform.git",
     "directory": "packages/ui"
   },
-  "keywords": [
-    "react",
-    "components",
-    "grid",
-    "reactive",
-    "signals",
-    "data-table",
-    "azmara"
-  ],
+  "keywords": ["react", "components", "grid", "reactive", "signals", "data-table", "azmara"],
   "engines": {
     "node": ">=18.0.0"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
       "import": "./dist/index.js",

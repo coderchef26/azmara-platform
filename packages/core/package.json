@@ -11,22 +11,11 @@
     "url": "git+https://github.com/coderchef26/azmara-platform.git",
     "directory": "packages/core"
   },
-  "keywords": [
-    "reactive",
-    "signals",
-    "computed",
-    "effects",
-    "state-management",
-    "azmara"
-  ],
+  "keywords": ["reactive", "signals", "computed", "effects", "state-management", "azmara"],
   "engines": {
     "node": ">=18.0.0"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
