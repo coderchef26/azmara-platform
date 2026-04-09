@@ -1,5 +1,5 @@
 {
-  "name": "@azmara/db",
+  "name": "@azmr/db",
   "version": "0.0.1",
   "description": "Secure SQLite persistence adapter \u00e2\u20ac\u201d parameterised queries, path containment, tamper-evident audit log",
   "type": "module",
@@ -30,7 +30,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@azmara/security": "workspace:*",
+    "@azmr/security": "workspace:*",
     "better-sqlite3": "^11.7.0"
   },
   "devDependencies": {

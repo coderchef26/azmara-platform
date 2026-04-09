@@ -2,18 +2,18 @@
 sidebar_position: 5
 ---
 
-# @azmara/ai
+# @azmr/ai
 
 AI auto-fix system with true V8 isolate sandboxing.
 
 ## Installation
 
 ```bash
-pnpm add @azmara/ai
+pnpm add @azmr/ai
 ```
 
 :::info Native module
-`@azmara/ai` uses `isolated-vm` which requires compilation. See [Installation](/docs/guide/installation#native-module-note).
+`@azmr/ai` uses `isolated-vm` which requires compilation. See [Installation](/docs/guide/installation#native-module-note).
 :::
 
 ## Sandbox
@@ -21,7 +21,7 @@ pnpm add @azmara/ai
 Run untrusted code inside a V8 isolate with no access to Node.js, the file system, or the network.
 
 ```typescript
-import { runInSandbox } from "@azmara/ai";
+import { runInSandbox } from "@azmr/ai";
 
 const result = await runInSandbox(`
   const x = [1, 2, 3].reduce((a, b) => a + b, 0);
@@ -40,7 +40,7 @@ if (result.success) {
 AI-powered file improvement pipeline with mandatory sandbox check before applying.
 
 ```typescript
-import { autoFix } from "@azmara/ai";
+import { autoFix } from "@azmr/ai";
 
 const result = await autoFix(
   "src/index.ts",

@@ -1,4 +1,4 @@
-import type { Signal } from "@azmara/core";
+import type { Signal } from "@azmr/core";
 import { useSignal } from "./useSignal.js";
 
 interface GridProps<T extends Record<string, unknown>> {

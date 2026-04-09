@@ -24,7 +24,7 @@ All AI-generated code runs inside a secure V8 isolate before being applied to an
 ## Usage
 
 ```typescript
-import { runInSandbox } from "@azmara/ai";
+import { runInSandbox } from "@azmr/ai";
 
 const result = await runInSandbox(`
   const nums = [1, 2, 3, 4, 5];

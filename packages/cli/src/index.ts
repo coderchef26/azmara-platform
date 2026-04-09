@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { sanitiseForLog } from "@azmara/security";
+import { sanitiseForLog } from "@azmr/security";
 import { dbQuery } from "./commands/db-query.js";
 import { init } from "./commands/init.js";
 

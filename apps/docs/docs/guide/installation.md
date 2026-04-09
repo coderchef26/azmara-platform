@@ -8,7 +8,7 @@ sidebar_position: 2
 
 - Node.js >= 20.0.0
 - pnpm >= 9.0.0
-- **For `@azmara/ai`**: Visual Studio 2022 with "Desktop development with C++" workload
+- **For `@azmr/ai`**: Visual Studio 2022 with "Desktop development with C++" workload
 
 ## Clone & install
 
@@ -40,12 +40,12 @@ pnpm build
 ## Run the playground
 
 ```bash
-pnpm --filter @azmara/playground dev
+pnpm --filter @azmr/playground dev
 ```
 
 ## Native module note
 
-`@azmara/ai` uses `isolated-vm` which requires native compilation.
+`@azmr/ai` uses `isolated-vm` which requires native compilation.
 
 **Windows:**
 1. Install **Visual Studio 2022** with "Desktop development with C++" workload

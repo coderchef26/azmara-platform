@@ -1,6 +1,6 @@
 # AI Sandbox
 
-All AI-generated code in `@azmara/ai` is executed inside a secure sandbox before being applied.
+All AI-generated code in `@azmr/ai` is executed inside a secure sandbox before being applied.
 
 ## Why isolated-vm, not vm2
 
@@ -20,7 +20,7 @@ All AI-generated code in `@azmara/ai` is executed inside a secure sandbox before
 ## Usage
 
 ```typescript
-import { runInSandbox } from "@azmara/ai";
+import { runInSandbox } from "@azmr/ai";
 
 const result = await runInSandbox(`
   const x = 1 + 1;

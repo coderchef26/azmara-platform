@@ -1,4 +1,4 @@
-import { createAuditLogger } from "@azmara/security";
+import { createAuditLogger } from "@azmr/security";
 import ivm from "isolated-vm";
 
 const SANDBOX_TIMEOUT_MS = 5_000;

@@ -2,7 +2,7 @@
 sidebar_position: 7
 ---
 
-# @azmara/cli
+# @azmr/cli
 
 Command-line tooling for Azmara Platform.
 

@@ -1,6 +1,6 @@
-import { Signal, computed } from "@azmara/core";
-import { query } from "@azmara/query";
-import { useSignal } from "@azmara/ui";
+import { Signal, computed } from "@azmr/core";
+import { query } from "@azmr/query";
+import { useSignal } from "@azmr/ui";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 // ── Signals (module-level — stable across renders) ─────────────────────────
@@ -34,8 +34,8 @@ const minBalanceSignal = new Signal(0);
 
 // ── Code snippets ──────────────────────────────────────────────────────────
 const CODE_SIGNALS = `\
-import { Signal, computed } from "@azmara/core";
-import { useSignal } from "@azmara/ui";
+import { Signal, computed } from "@azmr/core";
+import { useSignal } from "@azmr/ui";
 
 // Source signal
 const count = new Signal(0);
@@ -62,8 +62,8 @@ function Counter() {
 }`;
 
 const CODE_QUERY = `\
-import { Signal } from "@azmara/core";
-import { query } from "@azmara/query";
+import { Signal } from "@azmr/core";
+import { query } from "@azmr/query";
 
 const minBalance = new Signal(0);
 
@@ -84,8 +84,8 @@ const results = query(customers)
 // → filtered + sorted array, no boilerplate`;
 
 const CODE_GRID = `\
-import { Signal } from "@azmara/core";
-import { useSignal } from "@azmara/ui";
+import { Signal } from "@azmr/core";
+import { useSignal } from "@azmr/ui";
 
 type Product = { name: string; price: number; inStock: boolean };
 
@@ -284,7 +284,7 @@ function SignalPanel() {
           Reactive Engine
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span className="panel-badge">@azmara/core</span>
+          <span className="panel-badge">@azmr/core</span>
           <button
             type="button"
             className={`code-toggle-btn${showCode ? " active" : ""}`}
@@ -369,7 +369,7 @@ function QueryPanel() {
           Query Engine
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <span className="panel-badge">@azmara/query</span>
+          <span className="panel-badge">@azmr/query</span>
           <button
             type="button"
             className={`code-toggle-btn${showCode ? " active" : ""}`}
@@ -480,7 +480,7 @@ function GridPanel() {
 
       <div className="panel-body">
         <div style={{ fontSize: 10, fontFamily: "var(--mono)", color: "var(--text-muted)" }}>
-          signal&lt;Product[]&gt; → @azmara/ui Grid
+          signal&lt;Product[]&gt; → @azmr/ui Grid
         </div>
 
         {products.length > 0 ? (
@@ -570,7 +570,7 @@ export function App() {
           {["core", "query", "ui", "db", "security", "ai", "cli"].map((pkg) => (
             <div key={pkg} className="footer-pkg">
               <div className="footer-pkg-dot" />
-              @azmara/{pkg}
+              @azmr/{pkg}
             </div>
           ))}
         </div>

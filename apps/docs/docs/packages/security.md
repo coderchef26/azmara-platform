@@ -2,20 +2,20 @@
 sidebar_position: 6
 ---
 
-# @azmara/security
+# @azmr/security
 
 Shared security utilities — validation, audit logging, sanitisation, and env guards.
 
 ## Installation
 
 ```bash
-pnpm add @azmara/security
+pnpm add @azmr/security
 ```
 
 ## Validation
 
 ```typescript
-import { validate, z } from "@azmara/security";
+import { validate, z } from "@azmr/security";
 
 const UserSchema = z.object({
   name: z.string().min(1).max(100),
@@ -32,7 +32,7 @@ const user = validate(UserSchema, req.body);
 Call once at startup to fail fast if required env vars are missing.
 
 ```typescript
-import { validateEnv } from "@azmara/security";
+import { validateEnv } from "@azmr/security";
 
 validateEnv(["OPENAI_API_KEY", "AZMARA_ENCRYPTION_KEY"]);
 ```
@@ -40,7 +40,7 @@ validateEnv(["OPENAI_API_KEY", "AZMARA_ENCRYPTION_KEY"]);
 ## Audit logger
 
 ```typescript
-import { createAuditLogger } from "@azmara/security";
+import { createAuditLogger } from "@azmr/security";
 
 const audit = createAuditLogger("my-service");
 audit.log("user:login", { userId: "abc123" });
@@ -51,7 +51,7 @@ See [Audit Logging](/docs/security/audit-logging) for full details.
 ## Sanitisation
 
 ```typescript
-import { assertSafeIdentifier, assertSafePath, sanitiseForLog } from "@azmara/security";
+import { assertSafeIdentifier, assertSafePath, sanitiseForLog } from "@azmr/security";
 
 assertSafeIdentifier("customers");       // passes
 assertSafeIdentifier("users; DROP TABLE"); // throws

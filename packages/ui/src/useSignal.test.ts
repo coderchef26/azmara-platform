@@ -1,4 +1,4 @@
-import { Signal } from "@azmara/core";
+import { Signal } from "@azmr/core";
 import { describe, expect, it } from "vitest";
 
 // useSignal is a React hook — full render tests go in a future pass

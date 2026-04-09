@@ -1,5 +1,5 @@
 {
-  "name": "@azmara/playground",
+  "name": "@azmr/playground",
   "version": "0.0.1",
   "private": true,
   "description": "Playground app — develop and test Azmara platform packages",
@@ -13,11 +13,11 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@azmara/core": "workspace:*",
-    "@azmara/db": "workspace:*",
-    "@azmara/query": "workspace:*",
-    "@azmara/security": "workspace:*",
-    "@azmara/ui": "workspace:*",
+    "@azmr/core": "workspace:*",
+    "@azmr/db": "workspace:*",
+    "@azmr/query": "workspace:*",
+    "@azmr/security": "workspace:*",
+    "@azmr/ui": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

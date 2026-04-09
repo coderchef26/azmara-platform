@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { assertSafePath, createAuditLogger } from "@azmara/security";
+import { assertSafePath, createAuditLogger } from "@azmr/security";
 import { runInSandbox } from "./sandbox.js";
 
 const audit = createAuditLogger("ai:fix");

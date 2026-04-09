@@ -1,13 +1,13 @@
-# @azmara/security
+# @azmr/security
 
 Security utilities for the Azmara platform — input validation, environment guards, identifier sanitisation, and a tamper-evident hash-chained audit log. Built around OWASP Top 10 mitigations.
 
 ## Install
 
 ```bash
-pnpm add @azmara/security
+pnpm add @azmr/security
 # or
-npm install @azmara/security
+npm install @azmr/security
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ import {
   assertSafePath,
   sanitiseForLog,
   createAuditLogger,
-} from "@azmara/security";
+} from "@azmr/security";
 import { z } from "zod";
 
 // Fail fast if required env vars are missing

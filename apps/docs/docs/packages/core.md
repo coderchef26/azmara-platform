@@ -2,14 +2,14 @@
 sidebar_position: 1
 ---
 
-# @azmara/core
+# @azmr/core
 
 Reactive engine — signals, effects, and computed values.
 
 ## Installation
 
 ```bash
-pnpm add @azmara/core
+pnpm add @azmr/core
 ```
 
 ## Signal
@@ -17,7 +17,7 @@ pnpm add @azmara/core
 A reactive value container. Any effect that reads `.get()` while active will re-run when the value changes.
 
 ```typescript
-import { Signal } from "@azmara/core";
+import { Signal } from "@azmr/core";
 
 const count = new Signal(0);
 count.set(1);
@@ -30,7 +30,7 @@ console.log(count.peek()); // 1 — reads without subscribing
 Runs a function immediately and re-runs whenever any Signal read inside it changes. Returns a disposer.
 
 ```typescript
-import { Signal, effect } from "@azmara/core";
+import { Signal, effect } from "@azmr/core";
 
 const name = new Signal("Aroha");
 
@@ -48,7 +48,7 @@ name.set("Tane");
 A read-only Signal whose value is derived from other Signals.
 
 ```typescript
-import { Signal, computed } from "@azmara/core";
+import { Signal, computed } from "@azmr/core";
 
 const price = new Signal(100);
 const gst = computed(() => price.get() * 0.15);
@@ -63,7 +63,7 @@ console.log(gst.get()); // 30
 Listen to a Signal from outside the reactive system — useful for bridging to React, Vue, or any non-reactive code.
 
 ```typescript
-import { Signal } from "@azmara/core";
+import { Signal } from "@azmr/core";
 
 const price = new Signal(100);
 

@@ -1,5 +1,5 @@
 {
-  "name": "@azmara/security",
+  "name": "@azmr/security",
   "version": "0.0.1",
   "description": "Security utilities \u00e2\u20ac\u201d validation, audit logging, sanitisation, env guards",
   "type": "module",

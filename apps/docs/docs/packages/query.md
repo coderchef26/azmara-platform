@@ -2,20 +2,20 @@
 sidebar_position: 2
 ---
 
-# @azmara/query
+# @azmr/query
 
 Chainable, data-first query builder over arrays or reactive Signals.
 
 ## Installation
 
 ```bash
-pnpm add @azmara/query @azmara/core
+pnpm add @azmr/query @azmr/core
 ```
 
 ## Basic usage
 
 ```typescript
-import { query } from "@azmara/query";
+import { query } from "@azmr/query";
 
 const customers = [
   { name: "Aroha", balance: 150 },
@@ -34,8 +34,8 @@ const result = query(customers)
 ## With a reactive Signal
 
 ```typescript
-import { Signal } from "@azmara/core";
-import { query } from "@azmara/query";
+import { Signal } from "@azmr/core";
+import { query } from "@azmr/query";
 
 const data = new Signal(customers);
 

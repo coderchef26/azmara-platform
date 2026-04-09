@@ -2,14 +2,14 @@
 sidebar_position: 4
 ---
 
-# @azmara/ui
+# @azmr/ui
 
 React components wired to reactive Signals.
 
 ## Installation
 
 ```bash
-pnpm add @azmara/ui @azmara/core react react-dom
+pnpm add @azmr/ui @azmr/core react react-dom
 ```
 
 ## Grid
@@ -17,8 +17,8 @@ pnpm add @azmara/ui @azmara/core react react-dom
 A reactive data grid that automatically re-renders when its Signal updates.
 
 ```tsx
-import { Signal } from "@azmara/core";
-import { Grid } from "@azmara/ui";
+import { Signal } from "@azmr/core";
+import { Grid } from "@azmr/ui";
 
 const customers = new Signal([
   { name: "Aroha", balance: 150 },
@@ -42,7 +42,7 @@ When `customers.set([...])` is called, the grid updates automatically — no sta
 Hook to subscribe a React component to any Signal. Uses `Signal.subscribe()` for push-based updates — the component re-renders only when the signal value actually changes.
 
 ```tsx
-import { useSignal } from "@azmara/ui";
+import { useSignal } from "@azmr/ui";
 
 function Counter({ count }: { count: Signal<number> }) {
   const value = useSignal(count);

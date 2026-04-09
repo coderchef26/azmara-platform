@@ -31,10 +31,10 @@ Every layer speaks the same language. Query results flow directly into Signals. 
 ## The core model
 
 ```
-@azmara/db      ← your data lives here, secured and persistent
-@azmara/query   ← you express what you want, not how to get it
-@azmara/core    ← the result becomes reactive automatically
-@azmara/ui      ← your UI reflects reality at all times
+@azmr/db      ← your data lives here, secured and persistent
+@azmr/query   ← you express what you want, not how to get it
+@azmr/core    ← the result becomes reactive automatically
+@azmr/ui      ← your UI reflects reality at all times
 ```
 
 ## What this means in practice

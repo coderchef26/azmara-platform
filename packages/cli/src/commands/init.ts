@@ -16,9 +16,9 @@ function packageJson(name: string): string {
         build: "tsc",
       },
       dependencies: {
-        "@azmara/core": "latest",
-        "@azmara/db": "latest",
-        "@azmara/query": "latest",
+        "@azmr/core": "latest",
+        "@azmr/db": "latest",
+        "@azmr/query": "latest",
       },
       devDependencies: {
         tsx: "latest",
@@ -58,7 +58,7 @@ dist/
 const envExample = `# Add your environment variables here
 # Copy to .env.local — never commit .env.local
 
-# Required for @azmara/ai (coming soon)
+# Required for @azmr/ai (coming soon)
 # ANTHROPIC_API_KEY=
 `;
 
@@ -67,9 +67,9 @@ function indexTs(name: string): string {
 /**
  * ${name} — built with Azmara Platform
  */
-import { Signal, computed, effect } from "@azmara/core";
-import { query } from "@azmara/query";
-import { SQLiteAdapter } from "@azmara/db";
+import { Signal, computed, effect } from "@azmr/core";
+import { query } from "@azmr/query";
+import { SQLiteAdapter } from "@azmr/db";
 import { mkdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";

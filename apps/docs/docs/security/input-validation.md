@@ -13,7 +13,7 @@ All data entering the platform from external sources is validated with [Zod](htt
 ## validate()
 
 ```typescript
-import { validate, z } from "@azmara/security";
+import { validate, z } from "@azmr/security";
 
 const CreateCustomerSchema = z.object({
   name: z.string().min(1).max(100).trim(),
@@ -31,7 +31,7 @@ On failure, `validate()` throws with structured field-level errors — never lea
 ## validateEnv()
 
 ```typescript
-import { validateEnv } from "@azmara/security";
+import { validateEnv } from "@azmr/security";
 
 // Call once at app startup — fails fast with a clear message
 validateEnv([
@@ -43,10 +43,10 @@ validateEnv([
 
 ## assertSafeIdentifier()
 
-Used internally by `@azmara/db` before any SQL is built. Only allows `[a-zA-Z_][a-zA-Z0-9_]{0,63}`.
+Used internally by `@azmr/db` before any SQL is built. Only allows `[a-zA-Z_][a-zA-Z0-9_]{0,63}`.
 
 ```typescript
-import { assertSafeIdentifier } from "@azmara/security";
+import { assertSafeIdentifier } from "@azmr/security";
 
 assertSafeIdentifier("customers");         // ✅ passes
 assertSafeIdentifier("1invalid");          // ❌ throws
@@ -58,7 +58,7 @@ assertSafeIdentifier("users; DROP TABLE"); // ❌ throws
 Prevents path traversal — ensures a resolved path stays within an allowed base directory.
 
 ```typescript
-import { assertSafePath } from "@azmara/security";
+import { assertSafePath } from "@azmr/security";
 
 assertSafePath("/data/user.db", "/data");       // ✅ passes
 assertSafePath("/data/../etc/passwd", "/data"); // ❌ throws

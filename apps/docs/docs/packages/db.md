@@ -2,20 +2,20 @@
 sidebar_position: 3
 ---
 
-# @azmara/db
+# @azmr/db
 
 Secure SQLite persistence adapter built on `better-sqlite3`.
 
 ## Installation
 
 ```bash
-pnpm add @azmara/db
+pnpm add @azmr/db
 ```
 
 ## Usage
 
 ```typescript
-import { SQLiteAdapter } from "@azmara/db";
+import { SQLiteAdapter } from "@azmr/db";
 
 const db = new SQLiteAdapter(".azmara/db/app.db", ".azmara/db");
 

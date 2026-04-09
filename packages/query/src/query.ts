@@ -1,4 +1,4 @@
-import type { Signal } from "@azmara/core";
+import type { Signal } from "@azmr/core";
 
 type Predicate<T> = (item: T) => boolean;
 type Comparator<T> = (a: T, b: T) => number;
