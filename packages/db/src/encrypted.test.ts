@@ -33,7 +33,8 @@ describe("createColumnEncryption", () => {
     const enc = createColumnEncryption(SECRET);
     const cipher = enc.encrypt("secret");
     const buf = Buffer.from(cipher, "base64");
-    buf[buf.length - 1] ^= 0xff;
+    // biome-ignore lint/style/noNonNullAssertion: buf is non-empty, last byte always exists
+    buf[buf.length - 1]! ^= 0xff;
     expect(() => enc.decrypt(buf.toString("base64"))).toThrow();
   });
 
