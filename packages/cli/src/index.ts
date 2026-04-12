@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import { sanitiseForLog } from "@azmr/security";
+import { auditVerify } from "./commands/audit-verify.js";
 import { dbQuery } from "./commands/db-query.js";
 import { init } from "./commands/init.js";
 
@@ -25,17 +26,18 @@ const COMMANDS: Record<string, (args: string[]) => void | Promise<void>> = {
 
   Coming soon:
     fix <file>               AI-assisted code fix (requires API key)
-    audit:verify             Verify audit log chain integrity
 
   Examples:
     azmara init my-app
     azmara db:query .azmara/app.db "SELECT * FROM customers"
-    azmara db:query .azmara/app.db "SELECT name, balance FROM customers WHERE balance > 0"
+    azmara audit:verify
+    azmara audit:verify path/to/audit.log
 `);
   },
 
   init,
   "db:query": dbQuery,
+  "audit:verify": auditVerify,
 };
 
 async function main() {
