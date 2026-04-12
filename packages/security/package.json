@@ -1,7 +1,7 @@
 {
   "name": "@azmr/security",
-  "version": "0.0.1",
-  "description": "Security utilities \u00e2\u20ac\u201d validation, audit logging, sanitisation, env guards",
+  "version": "0.1.0",
+  "description": "Security utilities â€” validation, audit logging, sanitisation, env guards",
   "type": "module",
   "license": "MIT",
   "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",
@@ -11,11 +11,23 @@
     "url": "git+https://github.com/coderchef26/azmara-platform.git",
     "directory": "packages/security"
   },
-  "keywords": ["security", "validation", "sanitisation", "audit-log", "zod", "owasp", "azmara"],
+  "keywords": [
+    "security",
+    "validation",
+    "sanitisation",
+    "audit-log",
+    "zod",
+    "owasp",
+    "azmara"
+  ],
   "engines": {
     "node": ">=18.0.0"
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "exports": {
     ".": {
       "import": "./dist/index.js",
