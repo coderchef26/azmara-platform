@@ -35,21 +35,19 @@ export function createJWT(secret: string) {
 
   const key = Buffer.from(secret, "utf-8");
 
-  function sign(
-    payload: Omit<JWTPayload, "iat" | "exp">,
-    options: JWTOptions = {},
-  ): string {
+  function sign(payload: Omit<JWTPayload, "iat" | "exp">, options: JWTOptions = {}): string {
     const { expiresInMs = 15 * 60 * 1000 } = options;
     const now = Math.floor(Date.now() / 1000);
 
-    // biome-ignore lint/suspicious/noExplicitAny: spread of Omit<JWTPayload> + iat/exp is always a valid JWTPayload
-    const fullPayload = { ...payload, iat: now, exp: now + Math.floor(expiresInMs / 1000) } as JWTPayload;
+    const fullPayload = {
+      ...payload,
+      iat: now,
+      exp: now + Math.floor(expiresInMs / 1000),
+    } as JWTPayload;
 
     const header = toBase64url(JSON.stringify({ alg: "HS256", typ: "JWT" }));
     const body = toBase64url(JSON.stringify(fullPayload));
-    const sig = toBase64url(
-      crypto.createHmac("sha256", key).update(`${header}.${body}`).digest(),
-    );
+    const sig = toBase64url(crypto.createHmac("sha256", key).update(`${header}.${body}`).digest());
 
     return `${header}.${body}.${sig}`;
   }
@@ -68,16 +66,11 @@ export function createJWT(secret: string) {
     const sigBuf = Buffer.from(sig, "base64url");
     const expBuf = Buffer.from(expected, "base64url");
 
-    if (
-      sigBuf.length !== expBuf.length ||
-      !crypto.timingSafeEqual(sigBuf, expBuf)
-    ) {
+    if (sigBuf.length !== expBuf.length || !crypto.timingSafeEqual(sigBuf, expBuf)) {
       throw new Error("[azmara/security] Invalid JWT signature");
     }
 
-    const payload = JSON.parse(
-      Buffer.from(body, "base64url").toString("utf-8"),
-    ) as JWTPayload;
+    const payload = JSON.parse(Buffer.from(body, "base64url").toString("utf-8")) as JWTPayload;
 
     if (payload.exp < Math.floor(Date.now() / 1000)) {
       throw new Error("[azmara/security] JWT expired");

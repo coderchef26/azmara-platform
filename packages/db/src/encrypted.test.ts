@@ -46,8 +46,6 @@ describe("createColumnEncryption", () => {
 
   it("throws on truncated data", () => {
     const enc = createColumnEncryption(SECRET);
-    expect(() => enc.decrypt(Buffer.from("short").toString("base64"))).toThrow(
-      "data too short",
-    );
+    expect(() => enc.decrypt(Buffer.from("short").toString("base64"))).toThrow("data too short");
   });
 });

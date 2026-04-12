@@ -37,10 +37,7 @@ export function createColumnEncryption(secret: string) {
     encrypt(plaintext: string): string {
       const iv = crypto.randomBytes(IV_BYTES);
       const cipher = crypto.createCipheriv(ALGORITHM, key, iv);
-      const encrypted = Buffer.concat([
-        cipher.update(plaintext, "utf-8"),
-        cipher.final(),
-      ]);
+      const encrypted = Buffer.concat([cipher.update(plaintext, "utf-8"), cipher.final()]);
       const tag = cipher.getAuthTag();
       // Layout: [iv (12)] [tag (16)] [ciphertext]
       return Buffer.concat([iv, tag, encrypted]).toString("base64");
@@ -60,10 +57,7 @@ export function createColumnEncryption(secret: string) {
       const decipher = crypto.createDecipheriv(ALGORITHM, key, iv);
       decipher.setAuthTag(tag);
 
-      return (
-        decipher.update(encrypted, undefined, "utf-8") +
-        decipher.final("utf-8")
-      );
+      return decipher.update(encrypted, undefined, "utf-8") + decipher.final("utf-8");
     },
   };
 }

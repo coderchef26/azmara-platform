@@ -23,9 +23,7 @@ interface AuditEntry {
  *   azmara audit:verify path/to/audit.log
  */
 export function auditVerify(args: string[]): void {
-  const logPath = path.resolve(
-    args[0] ?? process.env.AZMARA_AUDIT_LOG ?? ".azmara/audit.log",
-  );
+  const logPath = path.resolve(args[0] ?? process.env.AZMARA_AUDIT_LOG ?? ".azmara/audit.log");
 
   if (!fs.existsSync(logPath)) {
     console.error(`\n  [audit:verify] Log file not found: ${logPath}\n`);
@@ -54,15 +52,16 @@ export function auditVerify(args: string[]): void {
     }
 
     const { hash, ...base } = entry;
-    const expected = crypto
-      .createHash("sha256")
-      .update(JSON.stringify(base))
-      .digest("hex");
+    const expected = crypto.createHash("sha256").update(JSON.stringify(base)).digest("hex");
 
     if (hash !== expected) {
-      errors.push(`  Entry ${i + 1} [${entry.timestamp}]: hash mismatch — content may have been modified`);
+      errors.push(
+        `  Entry ${i + 1} [${entry.timestamp}]: hash mismatch — content may have been modified`,
+      );
     } else if (base.prevHash !== prevHash) {
-      errors.push(`  Entry ${i + 1} [${entry.timestamp}]: chain broken — entry may have been inserted or deleted`);
+      errors.push(
+        `  Entry ${i + 1} [${entry.timestamp}]: chain broken — entry may have been inserted or deleted`,
+      );
     } else {
       valid++;
     }

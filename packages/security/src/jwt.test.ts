@@ -28,7 +28,9 @@ describe("createJWT", () => {
     const jwt = createJWT(SECRET);
     const token = jwt.sign({ sub: "user-123" });
     const [header, , sig] = token.split(".");
-    const tampered = Buffer.from(JSON.stringify({ sub: "attacker", iat: 0, exp: 9999999999 })).toString("base64url");
+    const tampered = Buffer.from(
+      JSON.stringify({ sub: "attacker", iat: 0, exp: 9999999999 }),
+    ).toString("base64url");
     expect(() => jwt.verify(`${header}.${tampered}.${sig}`)).toThrow("Invalid JWT signature");
   });
 
