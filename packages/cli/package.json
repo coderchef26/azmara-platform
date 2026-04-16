@@ -11,21 +11,11 @@
     "url": "git+https://github.com/coderchef26/azmara-platform.git",
     "directory": "packages/cli"
   },
-  "keywords": [
-    "cli",
-    "scaffold",
-    "sqlite",
-    "developer-tools",
-    "azmara"
-  ],
+  "keywords": ["cli", "scaffold", "sqlite", "developer-tools", "azmara"],
   "engines": {
     "node": ">=18.0.0"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist", "README.md", "LICENSE"],
   "bin": {
     "azmara": "./dist/index.js"
   },

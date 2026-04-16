@@ -11,23 +11,11 @@
     "url": "git+https://github.com/coderchef26/azmara-platform.git",
     "directory": "packages/security"
   },
-  "keywords": [
-    "security",
-    "validation",
-    "sanitisation",
-    "audit-log",
-    "zod",
-    "owasp",
-    "azmara"
-  ],
+  "keywords": ["security", "validation", "sanitisation", "audit-log", "zod", "owasp", "azmara"],
   "engines": {
     "node": ">=18.0.0"
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "files": ["dist", "README.md", "LICENSE"],
   "exports": {
     ".": {
       "import": "./dist/index.js",
