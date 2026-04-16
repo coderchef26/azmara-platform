@@ -1,7 +1,7 @@
 {
   "name": "@azmr/security",
-  "version": "0.0.1",
-  "description": "Security utilities \u00e2\u20ac\u201d validation, audit logging, sanitisation, env guards",
+  "version": "0.1.0",
+  "description": "Security utilities â€” validation, audit logging, sanitisation, env guards",
   "type": "module",
   "license": "MIT",
   "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",

@@ -1,7 +1,7 @@
 {
   "name": "@azmr/cli",
-  "version": "0.0.1",
-  "description": "Azmara CLI \u00e2\u20ac\u201d scaffold apps, query local SQLite databases, manage your platform",
+  "version": "0.1.0",
+  "description": "Azmara CLI â€” scaffold apps, query local SQLite databases, manage your platform",
   "type": "module",
   "license": "MIT",
   "author": "Alshafaraz Gazi <alshafaraz.gazi@gmail.com>",

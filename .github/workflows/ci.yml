@@ -40,13 +40,15 @@ jobs:
         run: pnpm lint
 
       - name: Security audit
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm audit:deps
 
   changeset:
     name: Changeset check
     runs-on: ubuntu-latest
-    # Only check on PRs — not on direct pushes to main
-    if: github.event_name == 'pull_request'
+    # Only check on PRs — not on direct pushes to main or the Changesets release branch
+    if: github.event_name == 'pull_request' && github.head_ref != 'changeset-release/main'
 
     steps:
       - name: Checkout
