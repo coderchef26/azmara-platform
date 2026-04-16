@@ -40,6 +40,8 @@ jobs:
         run: pnpm lint
 
       - name: Security audit
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm audit:deps
 
   changeset:
