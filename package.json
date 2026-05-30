@@ -22,7 +22,9 @@
   "pnpm": {
     "onlyBuiltDependencies": ["@biomejs/biome", "better-sqlite3", "esbuild", "isolated-vm"],
     "overrides": {
-      "serialize-javascript": ">=7.0.3"
+      "serialize-javascript": ">=7.0.3",
+      "fast-uri": ">=3.1.2",
+      "@babel/plugin-transform-modules-systemjs": ">=7.29.4"
     }
   },
   "devDependencies": {

@@ -1,8 +1,10 @@
 {
   "name": "@azmr/ai",
   "version": "0.0.1",
-  "private": true,
   "description": "AI auto-fix system with isolated-vm sandboxing — safe code execution and analysis",
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {
