@@ -5,6 +5,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": ["dist"],
   "type": "module",
   "exports": {
     ".": {
