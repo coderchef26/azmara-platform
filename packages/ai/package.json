@@ -20,7 +20,9 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@azmr/security": "workspace:*",
+    "@azmr/security": "workspace:*"
+  },
+  "optionalDependencies": {
     "isolated-vm": "^5.0.1"
   },
   "devDependencies": {
